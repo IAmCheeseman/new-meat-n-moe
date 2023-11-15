@@ -1,7 +1,7 @@
 local path = (...):gsub("%.physics%.resolver_box$", "")
 local Class = require(path .. ".class")
 local Box = require(path .. ".physics.box")
-local physics = require(path .. ".physics.layer")
+local physics = require(path .. ".physics.physics")
 
 local ResolverBox = Class(Box)
 

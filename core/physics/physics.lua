@@ -1,4 +1,4 @@
-local path = (...):gsub("%.physics%.layer", "")
+local path = (...):gsub("%.physics%.physics", "")
 local event = require(path .. ".event")
 
 local debug = false
@@ -56,7 +56,6 @@ function physics.draw()
 end
 
 event.connect("keyPressed", function(key, isRepeat)
-  print(key, isRepeat)
   if not isRepeat and key == "f4" then
     debug = not debug
   end

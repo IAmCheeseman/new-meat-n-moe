@@ -29,7 +29,7 @@ core.Array          = require(path .. ".object.array")
 core.ResolverBox    = require(path .. ".physics.resolver_box")
 core.DetectorBox    = require(path .. ".physics.detector_box")
 
-local physics = require(path .. ".physics.layer")
+local physics = require(path .. ".physics.physics")
 
 function core.callbacks()
   love.update = function(dt)
