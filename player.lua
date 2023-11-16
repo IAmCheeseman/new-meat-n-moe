@@ -11,12 +11,19 @@ function Player:init()
   self.vx = 0
   self.vy = 0
 
+  self.n = core.assets.noise(16, 16, 0.5, 1)
+  self.blood = love.graphics.newShader("blood.frag")
+  self.blood:send("noise", self.n)
+  self.blood:send("strength", 1)
+
   self.speed = 110
   self.accel = 5
   self.frict = 10
 
   self.sprite = assets.entities.moe
   self.sprite:setOffsetPreset("center", "center")
+  self.bloodSprite = assets.entities.moe_bloody
+  self.bloodSprite:setOffsetPreset("center", "center")
 
   self.gun = Pistol(self)
   core.objs:add(self.gun)
@@ -81,6 +88,10 @@ end
 function Player:defaultDraw()
   local mx, _ = core.viewport.getMousePosition("main")
   self.sprite:draw(self.x, self.y, 0, mx > self.x and -1 or 1, 1)
+
+  love.graphics.setShader(self.blood)
+  self.bloodSprite:draw(self.x, self.y, 0, mx > self.x and -1 or 1, 1)
+  love.graphics.setShader()
 end
 
 return Player
