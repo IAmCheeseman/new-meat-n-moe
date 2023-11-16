@@ -1,4 +1,4 @@
-local keybinds = require("keybinds")
+local controls = require("controls")
 local Pistol = require("pistol")
 
 local Player = core.Class(core.GameObj)
@@ -11,7 +11,7 @@ function Player:init()
   self.vx = 0
   self.vy = 0
 
-  self.n = core.assets.noise(16, 16, 0.5, 1)
+  self.n = core.assets.noise(11, 11, 0.5, 1)
   self.blood = love.graphics.newShader("blood.frag")
   self.blood:send("noise", self.n)
   self.blood:send("strength", 1)
@@ -68,10 +68,10 @@ end
 
 function Player:defaultUpdate(dt)
   local ix, iy = 0, 0
-  if love.keyboard.isDown(keybinds.up) then iy = iy - 1 end
-  if love.keyboard.isDown(keybinds.left) then ix = ix - 1 end
-  if love.keyboard.isDown(keybinds.down) then iy = iy + 1 end
-  if love.keyboard.isDown(keybinds.right) then ix = ix + 1 end
+  if love.keyboard.isDown(controls.keys.up) then iy = iy - 1 end
+  if love.keyboard.isDown(controls.keys.left) then ix = ix - 1 end
+  if love.keyboard.isDown(controls.keys.down) then iy = iy + 1 end
+  if love.keyboard.isDown(controls.keys.right) then ix = ix + 1 end
   ix, iy = core.math.normalize(ix, iy)
 
   local accel = self.accel
