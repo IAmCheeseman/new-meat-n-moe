@@ -96,12 +96,14 @@ end
 function Player:defaultDraw()
   local mx, _ = core.viewport.getMousePosition("main")
 
-  local y = self.y + self.bob
+  local y = math.floor(self.y + self.bob)
+  local x = math.floor(self.x)
+  local scalex = mx > self.x and -1 or 1
 
-  self.sprite:draw(self.x, y, 0, mx > self.x and -1 or 1, 1)
+  self.sprite:draw(x, y, 0, scalex, 1)
 
   love.graphics.setShader(self.blood)
-  self.bloodSprite:draw(self.x, y, 0, mx > self.x and -1 or 1, 1)
+  self.bloodSprite:draw(x, y, 0, scalex, 1)
   love.graphics.setShader()
 end
 
