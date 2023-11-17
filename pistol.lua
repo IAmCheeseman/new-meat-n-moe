@@ -19,6 +19,8 @@ function Pistol:update(dt)
   if self.x > mx then
     self.scaley = -1
   end
+
+  self.zIndex = math.floor(self.y)
 end
 
 function Pistol:draw()
