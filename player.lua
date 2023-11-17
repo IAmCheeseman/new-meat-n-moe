@@ -20,6 +20,8 @@ function Player:init()
   self.accel = 5
   self.frict = 10
 
+  self.bob = 0
+
   self.sprite = assets.entities.moe
   self.sprite:setOffsetPreset("center", "center")
   self.bloodSprite = assets.entities.moe_bloody
@@ -86,14 +88,20 @@ function Player:defaultUpdate(dt)
 
   local cw, ch = core.viewport.getSize("main")
   core.viewport.setCameraPos("main", self.x - cw / 2, self.y - ch / 2)
+
+  local animSpeed = 3 + core.math.length(self.vx, self.vy) / self.speed * 24
+  self.bob = core.math.lerp(self.bob, math.sin(core.getRuntime() * animSpeed) * 1.4, 15 * dt)
 end
 
 function Player:defaultDraw()
   local mx, _ = core.viewport.getMousePosition("main")
-  self.sprite:draw(self.x, self.y, 0, mx > self.x and -1 or 1, 1)
+
+  local y = self.y + self.bob
+
+  self.sprite:draw(self.x, y, 0, mx > self.x and -1 or 1, 1)
 
   love.graphics.setShader(self.blood)
-  self.bloodSprite:draw(self.x, self.y, 0, mx > self.x and -1 or 1, 1)
+  self.bloodSprite:draw(self.x, y, 0, mx > self.x and -1 or 1, 1)
   love.graphics.setShader()
 end
 
