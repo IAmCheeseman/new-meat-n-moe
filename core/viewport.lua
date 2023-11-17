@@ -5,6 +5,8 @@ local viewport = {}
 
 local viewports = {}
 
+local current = nil
+
 local function generateCanvas(v)
   local cw, ch = v.width, v.height
   if v.smoothCamera then
@@ -27,6 +29,10 @@ local function getViewportTransform(name)
   h = sh * scale
   local x, y = (ww - w) / 2, (wh - h) / 2
   return x, y, scale
+end
+
+function viewport.current()
+  return current
 end
 
 function viewport.isPointVisible(name, x, y)
@@ -74,12 +80,16 @@ end
 
 function viewport.drawTo(name, f)
   local v = viewports[name]
+  current = name
+
   love.graphics.push()
   love.graphics.setCanvas(v.canvas)
   love.graphics.translate(-math.floor(v.camerax), -math.floor(v.cameray))
   f()
   love.graphics.setCanvas()
   love.graphics.pop()
+
+  current = nil
 end
 
 function viewport.getMousePosition(name)
