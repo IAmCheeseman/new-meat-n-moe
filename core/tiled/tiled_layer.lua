@@ -19,7 +19,7 @@ function TiledLayer:init(layer)
   self.parallaxX = layer.parallaxx
   self.parallaxY = layer.parallaxy
   self.custom = layer.properties
-  self.zIndex = layer.properties.zIndex
+  self.zIndex = layer.properties.zIndex or 0
   layer.properties.zIndex = nil
 end
 
