@@ -17,6 +17,7 @@ core.event.define("mouseReleased")
 core.event.define("mouseMoved")
 core.event.define("update")
 core.event.define("draw")
+core.event.define("gui")
 
 core.math           = require(path .. ".mathf")
 core.assets         = require(path .. ".asset_loader")
@@ -24,6 +25,8 @@ core.viewport       = require(path .. ".viewport")
 core.tiled          = require(path .. ".tiled")
 
 core.viewport.create("main", 320, 180, true)
+core.viewport.create("gui", 320, 180, false)
+core.viewport.setBackgroundColor("gui", 0, 0, 0, 0)
 
 core.Class          = require(path .. ".class")
 core.StateMachine   = require(path .. ".state_machine")
@@ -70,13 +73,23 @@ end
 
 function core.draw()
   core.viewport.clear("main")
+  core.viewport.clear("gui")
+
   core.viewport.drawTo("main", function()
     app:draw()
     core.event.call("draw")
     physics.draw()
     love.graphics.setColor(1, 1, 1)
   end)
+
+  core.viewport.drawTo("gui", function()
+    app:gui()
+    core.event.call("gui")
+    love.graphics.setColor(1, 1, 1)
+  end)
+
   core.viewport.draw("main")
+  core.viewport.draw("gui")
 end
 
 return core

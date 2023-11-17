@@ -13,4 +13,7 @@ end
 function GameObj:draw()
 end
 
+function GameObj:gui()
+end
+
 return GameObj

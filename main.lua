@@ -8,11 +8,14 @@ core.viewport.setBackgroundColor("main", 0.25, 0.5, 0.35)
 core.callbacks()
 
 local Player = require("player")
+local Cursor = require("cursor")
 
 local layers = {}
 
 function love.load()
   layers = core.tiled.openLevel(assetDirectory, "assets.level1")
+
+  core.objs:add(Cursor())
 
   for _, v in ipairs(layers) do
     if v.type == "tilelayer" then

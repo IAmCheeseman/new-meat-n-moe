@@ -19,4 +19,8 @@ function App:draw()
   self.objList:draw()
 end
 
+function App:gui()
+  self.objList:gui()
+end
+
 return App

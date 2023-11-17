@@ -45,6 +45,12 @@ function ObjList:draw()
   end
 end
 
+function ObjList:gui()
+  for _, obj in self.objects:iter() do
+    obj:gui()
+  end
+end
+
 function ObjList:add(obj)
   self.additionQueue:add(obj, 1)
 end
