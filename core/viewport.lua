@@ -29,6 +29,13 @@ local function getViewportTransform(name)
   return x, y, scale
 end
 
+function viewport.isPointVisible(name, x, y)
+  local v = viewports[name]
+  local startx, starty = v.camerax, v.cameray
+  local endx, endy = startx + v.width, starty + v.height
+  return x > startx and x < endx and y > starty and y < endy
+end
+
 function viewport.getCameraPos(name)
   local v = viewports[name]
   return v.camerax, v.cameray
