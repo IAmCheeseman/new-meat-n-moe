@@ -11,6 +11,10 @@ return {
   tileheight = 16,
   nextlayerid = 4,
   nextobjectid = 3,
+  parallaxorigin = {
+    x = 0.5,
+    y = 0.5
+  },
   properties = {},
   tilesets = {
     {
@@ -312,8 +316,8 @@ return {
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
+      parallaxx = 0.8,
+      parallaxy = 0.8,
       properties = {},
       encoding = "lua",
       data = {

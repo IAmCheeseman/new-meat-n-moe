@@ -3,16 +3,18 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "level1.tmx",
     "expandedProjectPaths": [
+        ".",
+        "levels"
     ],
     "fileStates": {
         "level1.tmx": {
             "scale": 3,
-            "selectedLayer": 2,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 305,
-                "y": 167.66666666666666
+                "x": 175.66666666666666,
+                "y": 396.66666666666663
             }
         },
         "levels/level1.tmx": {
@@ -28,10 +30,14 @@
             "scaleInEditor": 4
         },
         "objects.tsx": {
-            "dynamicWrapping": true
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 32
         },
         "office_tiles.tsx": {
-            "dynamicWrapping": false
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 5.5
         }
     },
     "last.exportedFilePath": "/home/xswan/lua/oop/assets",
@@ -42,10 +48,15 @@
     "map.tileHeight": 16,
     "map.tileWidth": 16,
     "openFiles": [
+        "office_tiles.tsx",
+        "objects.tsx",
+        "level1.tmx"
     ],
     "project": "meatnmoe.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "office_tiles.tsx",
+        "objects.tsx",
         "level1.tmx",
         "levels/office_tiles.tsx",
         "levels/level1.tmx"

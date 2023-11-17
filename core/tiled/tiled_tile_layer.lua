@@ -1,4 +1,5 @@
 local path = (...):gsub("%.tiled%.tiled_tile_layer$", "")
+local viewport = require(path .. ".viewport")
 local Class = require(path .. ".class")
 local TiledLayer = require(path .. ".tiled.tiled_layer")
 local tile = require(path .. ".tiled.tiled_tilemap")
@@ -20,6 +21,7 @@ end
 function TiledTileLayer:initSpriteBatches()
   self.spriteBatches = {}
   local x, y = 0, 0
+
   for _, id in ipairs(self.tiles) do
     if id ~= 0 then
       local image, quad = tile.getTile(id)
@@ -39,8 +41,12 @@ function TiledTileLayer:initSpriteBatches()
 end
 
 function TiledTileLayer:draw()
+  local px, py = viewport.getCameraPos(viewport.current())
+  px = px * self.parallaxX
+  py = py * self.parallaxY
+
   for _, batch in pairs(self.spriteBatches) do
-    love.graphics.draw(batch, 0, 0)
+    love.graphics.draw(batch, px, py)
   end
 end
 
