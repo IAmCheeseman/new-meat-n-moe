@@ -18,7 +18,11 @@ function TiledImageLayer:init(layer)
 end
 
 function TiledImageLayer:draw()
+  local px, py = viewport.getCameraPos(viewport.current())
+  px = px * (self.parallaxX - 1)
+  py = py * (self.parallaxY - 1)
   local x, y = viewport.getCameraPos(viewport.current())
+
   local w, h = viewport.getSize(viewport.current())
   local iw, ih = self.image:getDimensions()
   w = mathf.snapped(w, iw)
@@ -26,6 +30,8 @@ function TiledImageLayer:draw()
 
   x = mathf.snapped(x, w) - w
   y = mathf.snapped(y, h) - h
+  x = x + px
+  y = y + py
   w = w * 3
   h = h * 3
 

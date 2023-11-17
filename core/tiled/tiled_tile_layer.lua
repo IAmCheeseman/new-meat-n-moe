@@ -42,8 +42,8 @@ end
 
 function TiledTileLayer:draw()
   local px, py = viewport.getCameraPos(viewport.current())
-  px = px * self.parallaxX
-  py = py * self.parallaxY
+  px = px * (self.parallaxX - 1)
+  py = py * (self.parallaxY - 1)
 
   for _, batch in pairs(self.spriteBatches) do
     love.graphics.draw(batch, px, py)

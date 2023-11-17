@@ -37,9 +37,9 @@ core.event.connect("draw", function()
     if v.type == "tilelayer" then
       v:draw()
     end
-    -- if v.type == "imagelayer" then
-    --   v:draw()
-    -- end
+    if v.type == "imagelayer" then
+      v:draw()
+    end
   end
 end)
 
