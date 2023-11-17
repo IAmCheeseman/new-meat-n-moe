@@ -17,6 +17,9 @@ function love.load()
   for _, v in ipairs(layers) do
     if v.type == "tilelayer" then
       core.tiled.generateTileLayerCollision(v)
+      core.objs:add(v)
+    elseif v.type == "imagelayer" then
+      core.objs:add(v)
     end
 
     if v.type == "objectgroup" then
@@ -31,15 +34,4 @@ function love.load()
     end
   end
 end
-
-core.event.connect("draw", function()
-  for _, v in ipairs(layers) do
-    if v.type == "tilelayer" then
-      v:draw()
-    end
-    if v.type == "imagelayer" then
-      v:draw()
-    end
-  end
-end)
 
