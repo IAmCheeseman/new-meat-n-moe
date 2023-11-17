@@ -9,18 +9,17 @@ core.callbacks()
 
 local Player = require("player")
 
-local anchor = { x=40, y=40 }
-
-local box = core.ResolverBox {
-  anchor = anchor,
-  test = "pasta"
-}
-
 local layers = {}
 
 function love.load()
   core.objs:add(Player())
   layers = core.tiled.openLevel(assetDirectory, "assets.level1")
+
+  for _, v in ipairs(layers) do
+    if v.type == "tilelayer" then
+      core.tiled.generateTileLayerCollision(v)
+    end
+  end
 end
 
 core.event.connect("draw", function()

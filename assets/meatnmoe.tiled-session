@@ -8,11 +8,11 @@
     ],
     "fileStates": {
         "level1.tmx": {
-            "scale": 2.2839583333333335,
-            "selectedLayer": 0,
+            "scale": 3,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 308.2367964973091,
-                "y": 208.4101067226124
+                "x": 305,
+                "y": 167.66666666666666
             }
         },
         "levels/level1.tmx": {
@@ -44,7 +44,9 @@
     "openFiles": [
     ],
     "project": "meatnmoe.tiled-project",
+    "property.type": "bool",
     "recentFiles": [
+        "level1.tmx",
         "levels/office_tiles.tsx",
         "levels/level1.tmx"
     ],

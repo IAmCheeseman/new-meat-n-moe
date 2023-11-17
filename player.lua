@@ -14,7 +14,7 @@ function Player:init()
   self.n = core.assets.noise(11, 11, 0.5, 1)
   self.blood = love.graphics.newShader("blood.frag")
   self.blood:send("noise", self.n)
-  self.blood:send("strength", 1)
+  self.blood:send("strength", 0)
 
   self.speed = 110
   self.accel = 5
@@ -83,6 +83,9 @@ function Player:defaultUpdate(dt)
   self.vy = core.math.lerp(self.vy, iy * self.speed, accel * dt)
 
   self.box:moveAndCollide(self.vx, self.vy, dt)
+
+  local cw, ch = core.viewport.getSize("main")
+  core.viewport.setCameraPos("main", self.x - cw / 2, self.y - ch / 2)
 end
 
 function Player:defaultDraw()

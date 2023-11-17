@@ -1,7 +1,7 @@
 local path = (...):gsub("%.tiled%.tiled_tilemap$", "")
 
 local tiles = {}
-local tileImages = {}
+local tilesets = {}
 
 local tile = {}
 
@@ -16,7 +16,36 @@ function tile.initTilemap(assetDirectory, data)
     end
   end
 
-  tileImages[#tiles] = love.graphics.newImage(assetDirectory .. data.image)
+  tilesets[#tiles] = {
+    image = love.graphics.newImage(assetDirectory .. data.image),
+    name = data.name,
+    width = data.tilewidth,
+    height = data.tileheight,
+  }
+end
+
+local function findTileset(id)
+  local tileset
+  for k, v in pairs(tilesets) do
+    if id <= k then
+      tileset = v
+    end
+  end
+
+  if not tileset then
+    error("Tile ID '" .. id .. "' is not defined.")
+  end
+
+  return tileset
+end
+
+function tile.getTileset(id)
+  return findTileset(id)
+end
+
+function tile.getSize(id)
+  local tileset = findTileset(id)
+  return tileset.width, tileset.height
 end
 
 function tile.clearTiles()
@@ -25,17 +54,7 @@ end
 
 function tile.getTile(id)
   local quad = tiles[id]
-  local image
-  for k, v in pairs(tileImages) do
-    if id <= k then
-      image = v
-    end
-  end
-
-  if not image then
-    error("Tile ID '" .. id .. "' is not defined.")
-  end
-
+  local image = findTileset(id).image
   return image, quad
 end
 

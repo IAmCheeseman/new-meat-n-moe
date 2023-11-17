@@ -7,13 +7,7 @@ local app = App()
 
 core.objs = app.objList
 
-core.math           = require(path .. ".mathf")
-core.assets         = require(path .. ".asset_loader")
-core.viewport       = require(path .. ".viewport")
 core.event          = require(path .. ".event")
-core.tiled          = require(path .. ".tiled")
-
-core.viewport.create("main", 320, 180, true)
 
 core.event.init(app.objList)
 core.event.define("keyPressed")
@@ -23,6 +17,13 @@ core.event.define("mouseReleased")
 core.event.define("mouseMoved")
 core.event.define("update")
 core.event.define("draw")
+
+core.math           = require(path .. ".mathf")
+core.assets         = require(path .. ".asset_loader")
+core.viewport       = require(path .. ".viewport")
+core.tiled          = require(path .. ".tiled")
+
+core.viewport.create("main", 320, 180, true)
 
 core.Class          = require(path .. ".class")
 core.StateMachine   = require(path .. ".state_machine")

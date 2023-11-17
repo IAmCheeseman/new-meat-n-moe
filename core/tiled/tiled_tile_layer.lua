@@ -8,6 +8,7 @@ local TiledTileLayer = Class(TiledLayer)
 function TiledTileLayer:init(layer)
   self:base("init", layer)
 
+  self.x, self.y = 0, 0
   self.width = layer.width
   self.height = layer.height
   self.tiles = layer.data
