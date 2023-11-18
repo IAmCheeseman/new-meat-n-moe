@@ -31,7 +31,7 @@ function DetectorBox:isColliding()
   return false
 end
 
-function DetectorBox:getColliding()
+function DetectorBox:iterColliding()
   local collisions = {}
 
   for layer, _ in pairs(self.mask) do
@@ -48,7 +48,15 @@ function DetectorBox:getColliding()
     end
   end
 
-  return collisions
+  local i = 0
+  return function()
+    i = i + 1
+    local c = collisions[i]
+    if not c then
+      return nil
+    end
+    return c.anchor, c
+  end
 end
 
 return DetectorBox

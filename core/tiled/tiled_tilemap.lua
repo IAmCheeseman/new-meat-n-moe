@@ -5,7 +5,7 @@ local tilesets = {}
 
 local tile = {}
 
-function tile.initTilemap(assetDirectory, data)
+function tile.initTilemap(assetDirectory, data, collisionLayers)
   for y=0, data.imageheight/data.tileheight-1 do
     for x=0, data.imagewidth/data.tilewidth-1 do
       local quad = love.graphics.newQuad(
@@ -21,6 +21,7 @@ function tile.initTilemap(assetDirectory, data)
     name = data.name,
     width = data.tilewidth,
     height = data.tileheight,
+    layers = collisionLayers or {"default"},
   }
 end
 

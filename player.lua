@@ -40,8 +40,7 @@ function Player:init()
   self.box = core.ResolverBox {
     anchor = self,
     layers = {"player"},
-    mask = {"default"},
-    test = "player collision",
+    mask = {"env"},
     x = -6,
     y = -6,
     w = 12,
@@ -52,7 +51,6 @@ function Player:init()
     anchor = self,
     layers = {"player"},
     mask = {"default"},
-    test = "player hitbox",
     x = -7,
     y = -7,
     w = 14,

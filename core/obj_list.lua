@@ -7,23 +7,34 @@ local ObjList = Class()
 
 function ObjList:init()
   self.objects = Array()
-  self.uniqueObjects = SparseSet()
-  self.additionQueue = Array()
-  self.removalQueue = Array()
+  self.objectMetadata = {}
+  self.additionQueue = {}
+  self.removalQueue = {}
 end
 
 function ObjList:flushQueues()
-  for _, v in self.additionQueue:iter() do
+  for _, v in ipairs(self.additionQueue) do
     self.objects:add(v)
-    self.uniqueObjects:add(v)
+    self.objectMetadata[v] = {
+      index = self.objects:len()
+    }
   end
-  self.additionQueue:clear()
+  self.additionQueue = {}
 
-  for _, v in self.removalQueue:iter() do
-    self.objects:add(v)
-    self.uniqueObjects:remove(v)
+  for _, v in ipairs(self.removalQueue) do
+    if self.objectMetadata[v] then
+      local index = self.objectMetadata[v].index
+      self.objects:swapRemove(index)
+
+      local newObj = self.objects[index]
+      if newObj then
+        self.objectMetadata[newObj].index = index
+      end
+
+      self.objectMetadata[v] = nil
+    end
   end
-  self.removalQueue:clear()
+  self.removalQueue = {}
 end
 
 function ObjList:update(dt)
@@ -40,7 +51,7 @@ function ObjList:draw()
   end)
 
   for i, obj in self.objects:iter() do
-    obj.zIndex = i
+    self.objectMetadata[obj].index = i
     obj:draw()
   end
 end
@@ -52,15 +63,15 @@ function ObjList:gui()
 end
 
 function ObjList:add(obj)
-  self.additionQueue:add(obj, 1)
+  table.insert(self.additionQueue, 1, obj)
 end
 
 function ObjList:remove(obj)
-  self.removalQueue:add(obj, 1)
+  table.insert(self.removalQueue, 1, obj)
 end
 
 function ObjList:hasObj(obj)
-  return self.uniqueObjects:has(obj)
+  return self.objectMetadata[obj] ~= nil
 end
 
 return ObjList

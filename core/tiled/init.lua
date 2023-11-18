@@ -7,6 +7,12 @@ local ResolverBox = require(path .. ".physics.resolver_box")
 
 local tiled = {}
 
+local collisionLayers = {}
+
+function tiled.setTilemapCollisionLayers(name, ...)
+  collisionLayers[name] = {...}
+end
+
 function tiled.generateTileLayerCollision(layer)
   local x, y = 0, 0
   local edgeIds = {}
@@ -33,6 +39,7 @@ function tiled.generateTileLayerCollision(layer)
           y = y * ts.height,
           w = ts.width,
           h = ts.height,
+          layers = ts.layers
         }
       end
     end
@@ -51,7 +58,7 @@ function tiled.openLevel(assetDirectory, level)
   tile.clearTiles()
   for _, tsData in ipairs(data.tilesets) do
     if tsData.image then
-      tile.initTilemap(assetDirectory, tsData)
+      tile.initTilemap(assetDirectory, tsData, collisionLayers[tsData.name])
     end
   end
 

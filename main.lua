@@ -5,6 +5,7 @@ assets = core.assets.load("assets")
 assetDirectory = "assets/"
 
 core.viewport.setBackgroundColor("main", 0.25, 0.5, 0.35)
+core.tiled.setTilemapCollisionLayers("office", "env")
 core.callbacks()
 
 local Player = require("player")
