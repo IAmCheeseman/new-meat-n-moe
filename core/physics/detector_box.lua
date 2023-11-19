@@ -8,6 +8,8 @@ local DetectorBox = Class(Box)
 function DetectorBox:init(data)
   self:base("init", data)
 
+  self.type = "detector"
+
   for _, layer in ipairs(data.layers or {"default"}) do
     physics.addToLayer(self, layer, "detector")
   end

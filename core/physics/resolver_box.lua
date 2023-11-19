@@ -8,6 +8,8 @@ local ResolverBox = Class(Box)
 function ResolverBox:init(data)
   self:base("init", data)
 
+  self.type = "resolver"
+
   for _, layer in ipairs(data.layers or {"default"}) do
     physics.addToLayer(self, layer, "resolver")
   end

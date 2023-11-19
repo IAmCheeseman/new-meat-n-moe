@@ -1,5 +1,6 @@
 local path = (...):gsub("%.game_obj$", "")
 local Class = require(path .. ".class")
+local physics = require(path .. ".physics.physics")
 
 local GameObj = Class()
 

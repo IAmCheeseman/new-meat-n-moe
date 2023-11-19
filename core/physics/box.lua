@@ -1,5 +1,6 @@
 local path = (...):gsub("%.physics%.box$", "")
 local Class = require(path .. ".class")
+local physics = require(path .. ".physics.physics")
 
 local Box = Class()
 
@@ -17,10 +18,11 @@ function Box:init(data)
   self.layers = {}
   self.mask = {}
 
-  self.test = data.test
   for _, mask in ipairs(data.mask or {"default"}) do
     self:addMask(mask)
   end
+
+  physics.registerBox(self)
 end
 
 function Box:addMask(mask)

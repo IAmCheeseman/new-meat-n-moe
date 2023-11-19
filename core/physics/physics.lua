@@ -4,6 +4,7 @@ local event = require(path .. ".event")
 local debug = false
 
 local physics = {}
+local objects = {}
 local layers = {}
 
 function physics.getLayerObjects(layer, type)
@@ -25,6 +26,35 @@ function physics.createLayer(name)
     detector = {},
   }
   layers[name] = newLayer
+end
+
+function physics.registerBox(box)
+  local anchor = box.anchor
+  if not objects[anchor] then
+    objects[anchor] = {}
+  end
+
+  table.insert(objects[anchor], box)
+end
+
+function physics.deleteObj(obj)
+  if not objects[obj] then
+    return
+  end
+
+  for _, box in ipairs(objects[obj]) do
+    for layerName, index in pairs(box.layers) do
+      local layer = layers[layerName][box.type]
+      layer[index] = layer[#layer]
+      layer[#layer] = nil
+
+      if layer[index] then
+        layer[index].layers[layerName] = index
+      end
+    end
+  end
+
+  objects[obj] = {}
 end
 
 function physics.addToLayer(box, layer, type)

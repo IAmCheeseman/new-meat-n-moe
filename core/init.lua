@@ -2,14 +2,8 @@ local path = (...):gsub("%.init$", "")
 
 local core = {}
 
-local App = require(path .. ".app")
-local app = App()
-
-core.objs = app.objList
-
 core.event          = require(path .. ".event")
 
-core.event.init(app.objList)
 core.event.define("keyPressed")
 core.event.define("keyReleased")
 core.event.define("mousePressed")
@@ -18,6 +12,13 @@ core.event.define("mouseMoved")
 core.event.define("update")
 core.event.define("draw")
 core.event.define("gui")
+
+local App = require(path .. ".app")
+local app = App()
+
+core.objs = app.objList
+
+core.event.init(app.objList)
 
 core.math           = require(path .. ".mathf")
 core.assets         = require(path .. ".asset_loader")

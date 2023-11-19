@@ -1,7 +1,7 @@
 local path = (...):gsub("%.obj_list$", "")
 local Class = require(path .. ".class")
 local Array = require(path .. ".object.array")
-local SparseSet = require(path .. ".object.sparse_set")
+local physics = require(path .. ".physics.physics")
 
 local ObjList = Class()
 
@@ -25,6 +25,8 @@ function ObjList:flushQueues()
     if self.objectMetadata[v] then
       local index = self.objectMetadata[v].index
       self.objects:swapRemove(index)
+
+      physics.deleteObj(v)
 
       local newObj = self.objects[index]
       if newObj then
