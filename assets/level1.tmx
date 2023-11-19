@@ -3,6 +3,9 @@
  <editorsettings>
   <export target="level1.lua" format="lua"/>
  </editorsettings>
+ <properties>
+  <property name="zIndex" type="int" value="320"/>
+ </properties>
  <tileset firstgid="1" source="office_tiles.tsx"/>
  <tileset firstgid="56" source="objects.tsx"/>
  <imagelayer id="3" name="Image" repeatx="1" repeaty="1">
@@ -11,7 +14,10 @@
    <property name="zIndex" type="int" value="-10"/>
   </properties>
  </imagelayer>
- <layer id="1" name="Tiles" width="30" height="20" offsetx="-1.33333" offsety="-2">
+ <layer id="1" name="Tiles" width="30" height="20">
+  <properties>
+   <property name="zIndex" type="int" value="320"/>
+  </properties>
   <data encoding="csv">
 13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,
 13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,

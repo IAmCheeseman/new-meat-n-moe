@@ -15,7 +15,9 @@ return {
     x = 0.5,
     y = 0.5
   },
-  properties = {},
+  properties = {
+    ["zIndex"] = 320
+  },
   tilesets = {
     {
       name = "office",
@@ -314,11 +316,13 @@ return {
       class = "",
       visible = true,
       opacity = 1,
-      offsetx = -1.33333,
-      offsety = -2,
+      offsetx = 0,
+      offsety = 0,
       parallaxx = 1,
       parallaxy = 1,
-      properties = {},
+      properties = {
+        ["zIndex"] = 320
+      },
       encoding = "lua",
       data = {
         13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13,

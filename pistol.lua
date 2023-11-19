@@ -30,9 +30,10 @@ end
 function Pistol:onMousePressed(x, y, button, isTouch, presses)
   if button == controls.mouse.weapon1 then
     local mx, my = core.viewport.getMousePosition("main")
-    local proj = Projectile(core.math.angle(mx - self.x, my - self.y), 200)
-    proj.x = self.x
-    proj.y = self.y
+    local angle = core.math.angle(mx - self.x, my - self.y)
+    local proj = Projectile(angle, 400)
+    proj.x = self.x + math.cos(angle) * 5
+    proj.y = self.y + math.sin(angle) * 5
 
     core.objs:add(proj)
   end
