@@ -2,14 +2,14 @@ love.graphics.setDefaultFilter("nearest", "nearest")
 
 core = require("core")
 assets = core.assets.load("assets")
-core.assets.loadScripts("objects/")
+core.assets.loadScripts("autoload/")
 assetDirectory = "assets/"
 
 core.viewport.setBackgroundColor("main", 0.25, 0.5, 0.35)
 core.tiled.setTilemapCollisionLayers("office", "env")
 core.callbacks()
 
-local Cursor = require("objects.cursor")
+local Cursor = require("require.cursor")
 
 local layers = {}
 

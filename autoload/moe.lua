@@ -1,5 +1,5 @@
-local Player = require("objects.player")
-local Pistol = require("objects.pistol")
+local Player = require("require.player")
+local Pistol = require("require.pistol")
 
 local Moe = core.Class(Player)
 
