@@ -1,5 +1,5 @@
-local Weapon = require("weapon")
-local Projectile = require("projectile")
+local Weapon = require("objects.weapon")
+local Projectile = require("objects.projectile")
 local controls = require("controls")
 
 local Pistol = core.Class(Weapon)

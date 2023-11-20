@@ -37,6 +37,10 @@ core.Array          = require(path .. ".object.array")
 core.ResolverBox    = require(path .. ".physics.resolver_box")
 core.DetectorBox    = require(path .. ".physics.detector_box")
 
+local TiledObjSpawner = require(path .. ".tiled.tiled_object_spawner")
+
+core.objSpawner = TiledObjSpawner(app.objList)
+
 local physics = require(path .. ".physics.physics")
 
 function core.callbacks()

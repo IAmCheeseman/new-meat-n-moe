@@ -1,5 +1,4 @@
 local controls = require("controls")
-local Pistol = require("pistol")
 
 local Player = core.Class(core.GameObj)
 
@@ -20,15 +19,10 @@ function Player:init()
   self.accel = 5
   self.frict = 10
 
-  self.bob = 0
-
   self.sprite = assets.entities.moe
   self.sprite:setOffsetPreset("center", "center")
   self.bloodSprite = assets.entities.moe_bloody
   self.bloodSprite:setOffsetPreset("center", "center")
-
-  self.gun = Pistol(self)
-  core.objs:add(self.gun)
 
   self.stateMachine = core.StateMachine(self)
       :addState("default", {
@@ -86,23 +80,9 @@ function Player:defaultUpdate(dt)
 
   local cw, ch = core.viewport.getSize("main")
   core.viewport.setCameraPos("main", self.x - cw / 2, self.y - ch / 2)
-
-  local animSpeed = 3 + core.math.length(self.vx, self.vy) / self.speed * 24
-  self.bob = core.math.lerp(self.bob, math.sin(core.getRuntime() * animSpeed) * 1.4, 15 * dt)
 end
 
 function Player:defaultDraw()
-  local mx, _ = core.viewport.getMousePosition("main")
-
-  local y = math.floor(self.y + self.bob)
-  local x = math.floor(self.x)
-  local scalex = mx > self.x and -1 or 1
-
-  self.sprite:draw(x, y, 0, scalex, 1)
-
-  love.graphics.setShader(self.blood)
-  self.bloodSprite:draw(x, y, 0, scalex, 1)
-  love.graphics.setShader()
 end
 
 return Player

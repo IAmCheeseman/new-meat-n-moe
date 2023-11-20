@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 4,
-  nextobjectid = 3,
+  nextobjectid = 4,
   parallaxorigin = {
     x = 0.5,
     y = 0.5
@@ -362,12 +362,12 @@ return {
       properties = {},
       objects = {
         {
-          id = 2,
-          name = "",
-          type = "Player",
+          id = 3,
+          name = "Player",
+          type = "Moe",
           shape = "rectangle",
-          x = 184.818,
-          y = 125.03,
+          x = 176,
+          y = 144,
           width = 11,
           height = 11,
           rotation = 0,
