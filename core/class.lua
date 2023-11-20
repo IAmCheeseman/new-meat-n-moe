@@ -8,10 +8,19 @@ end
 
 local function base(self, func, ...)
   local mt = getmetatable(self)
-  if not mt.__inherits then
+  local childMt = mt
+  if not childMt.__inherits then
     error("Cannot use 'base' on a base class.")
   end
-  return mt.__inherits[func](self, ...)
+
+  for _=1, childMt.__baseCalls do
+    mt = mt.__inherits
+  end
+
+  childMt.__baseCalls = childMt.__baseCalls + 1
+  local res = mt.__inherits[func](self, ...)
+  childMt.__baseCalls = childMt.__baseCalls - 1
+  return res
 end
 
 local function checkType(mt, class)
@@ -37,6 +46,7 @@ local classMt = {
 local function Class(inherits)
   local class = {}
   class.__index = class
+  class.__baseCalls = 0
 
   class.base = base
   class.isTypeOf = isTypeOf
