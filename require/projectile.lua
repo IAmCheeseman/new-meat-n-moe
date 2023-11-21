@@ -25,6 +25,7 @@ function Projectile:update(dt)
   for obj, box in self.hitbox:iterColliding() do
     if box:isInLayer("env") then
       core.objs:remove(self)
+      break
     end
 
     -- if obj.takeDamage then

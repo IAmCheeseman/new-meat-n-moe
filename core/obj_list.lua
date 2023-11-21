@@ -22,18 +22,16 @@ function ObjList:flushQueues()
   self.additionQueue = {}
 
   for _, v in ipairs(self.removalQueue) do
-    if self.objectMetadata[v] then
+    if self.objectMetadata[v] then -- Is this object already freed?
       local index = self.objectMetadata[v].index
+      self.objectMetadata[v] = nil
       self.objects:swapRemove(index)
-
       physics.deleteObj(v)
 
       local newObj = self.objects[index]
       if newObj then
         self.objectMetadata[newObj].index = index
       end
-
-      self.objectMetadata[v] = nil
     end
   end
   self.removalQueue = {}
@@ -52,9 +50,13 @@ function ObjList:draw()
     return a.zIndex < b.zIndex
   end)
 
+  print(self.objects:len())
+
   for i, obj in self.objects:iter() do
-    self.objectMetadata[obj].index = i
-    obj:draw()
+    if self.objectMetadata[obj] then
+      self.objectMetadata[obj].index = i
+      obj:draw()
+    end
   end
 end
 

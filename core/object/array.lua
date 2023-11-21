@@ -19,9 +19,7 @@ end
 
 function Array:swapRemove(index)
   self.items[index] = self.items[#self.items]
-  if #self.items ~= 0 then
-    self.items[#self.items] = nil
-  end
+  self.items[#self.items] = nil
 end
 
 function Array:pop()
