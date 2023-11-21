@@ -3,6 +3,7 @@ local Pellet = require("require.pellet")
 local controls = require("controls")
 
 local Shotgun = core.Class(Gun)
+local shootSfx = assets.sounds.shotgun
 
 function Shotgun:init(boundObj)
   self:base("init", boundObj, 1.3)
@@ -13,6 +14,9 @@ function Shotgun:init(boundObj)
 end
 
 function Shotgun:shoot(mx, my)
+  local shootSource = love.audio.newSource(shootSfx)
+  shootSource:play()
+
   local total = 10
   local spread = math.pi / 50
   local angle = core.math.angle(mx - self.x, my - self.y) - (spread * (total / 2))

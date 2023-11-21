@@ -46,7 +46,7 @@ return {
       properties = {},
       wangsets = {
         {
-          name = "Unnamed Set",
+          name = "Office",
           class = "",
           tile = -1,
           wangsettype = "mixed",
@@ -54,7 +54,7 @@ return {
           colors = {
             {
               color = { 255, 0, 0 },
-              name = "",
+              name = "office",
               class = "",
               probability = 1,
               tile = -1,

@@ -17,9 +17,9 @@ local loaders = {
   vs = love.graphics.newShader,
   glsl = love.graphics.newShader,
 
-  mp3 = love.audio.newSource,
-  ogg = love.audio.newSource,
-  wav = love.audio.newSource,
+  mp3 = love.sound.newSoundData,
+  ogg = love.sound.newSoundData,
+  wav = love.sound.newSoundData,
 
   ttf = love.filesystem.newFileData,
 

@@ -3,6 +3,7 @@ local Projectile = require("require.projectile")
 local controls = require("controls")
 
 local Pistol = core.Class(Gun)
+local shootSfx = assets.sounds.pistol
 
 function Pistol:init(boundObj)
   self:base("init", boundObj, 0.4)
@@ -13,6 +14,9 @@ function Pistol:init(boundObj)
 end
 
 function Pistol:shoot(mx, my)
+  local shootSource = love.audio.newSource(shootSfx)
+  shootSource:play()
+
   local angle = core.math.angle(mx - self.x, my - self.y)
   local proj = Projectile(angle, 400)
   proj.x = self.x + math.cos(angle) * 5
