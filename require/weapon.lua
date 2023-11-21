@@ -5,8 +5,8 @@ function Weapon:init(boundObj)
 
   self.x = boundObj.x
   self.y = boundObj.y
-  self.targetoffsetx = 0
-  self.targetoffsety = 0
+  self.targetOffsetX = 0
+  self.targetOffsetY = 0
 
   self.boundObj = boundObj
   self.trackSpeed = 48
