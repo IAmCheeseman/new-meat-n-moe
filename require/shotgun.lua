@@ -5,7 +5,7 @@ local controls = require("controls")
 local Shotgun = core.Class(Gun)
 
 function Shotgun:init(boundObj)
-  self:base("init", boundObj)
+  self:base("init", boundObj, 1.3)
   self.sprite = assets.entities.meat_gun
   self.sprite:setOffsetPreset("left", "center")
 

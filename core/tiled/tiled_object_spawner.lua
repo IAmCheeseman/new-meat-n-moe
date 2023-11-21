@@ -14,7 +14,7 @@ end
 
 function TiledObjSpawner:spawnLayer(layer)
   for _, obj in ipairs(layer.objs) do
-    local constructor = self.constructors[obj.type]
+    local constructor = self.constructors[obj.name]
     if constructor then
       local instance = constructor(obj)
       self.objs:add(instance)

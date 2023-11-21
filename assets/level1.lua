@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 4,
-  nextobjectid = 5,
+  nextobjectid = 10,
   parallaxorigin = {
     x = 0.5,
     y = 0.5
@@ -256,39 +256,6 @@ return {
       name = "objects",
       firstgid = 56,
       class = "",
-      tilewidth = 11,
-      tileheight = 11,
-      spacing = 0,
-      margin = 0,
-      columns = 0,
-      objectalignment = "unspecified",
-      tilerendersize = "tile",
-      fillmode = "stretch",
-      tileoffset = {
-        x = 0,
-        y = 0
-      },
-      grid = {
-        orientation = "orthogonal",
-        width = 1,
-        height = 1
-      },
-      properties = {},
-      wangsets = {},
-      tilecount = 1,
-      tiles = {
-        {
-          id = 0,
-          image = "entities/moe.png",
-          width = 11,
-          height = 11
-        }
-      }
-    },
-    {
-      name = "objects",
-      firstgid = 58,
-      class = "",
       tilewidth = 13,
       tileheight = 13,
       spacing = 0,
@@ -403,16 +370,16 @@ return {
       properties = {},
       objects = {
         {
-          id = 4,
-          name = "Player",
-          type = "Meat",
+          id = 9,
+          name = "Meat",
+          type = "",
           shape = "rectangle",
-          x = 176,
+          x = 160,
           y = 144,
           width = 13,
           height = 13,
           rotation = 0,
-          gid = 59,
+          gid = 57,
           visible = true,
           properties = {}
         }
