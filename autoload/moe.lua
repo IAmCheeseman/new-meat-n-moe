@@ -18,11 +18,25 @@ function Moe:init()
   core.objs:add(self.gun)
 end
 
+function Moe:updateBob(dt)
+  local ix, iy = self:getInputVector()
+  local animSpeed = 8
+  if core.math.length(ix, iy) ~= 0 then
+    animSpeed = 24
+  end
+  self.bob = core.math.lerp(self.bob, math.sin(core.getRuntime() * animSpeed) * 1.4, 15 * dt)
+end
+
 function Moe:defaultUpdate(dt)
   self:base("defaultUpdate", dt)
 
-  local animSpeed = 3 + core.math.length(self.vx, self.vy) / self.speed * 24
-  self.bob = core.math.lerp(self.bob, math.sin(core.getRuntime() * animSpeed) * 1.4, 15 * dt)
+  self:updateBob(dt)
+end
+
+function Moe:inactiveUpdate(dt)
+  self:base("inactiveUpdate", dt)
+
+  self:updateBob(dt)
 end
 
 function Moe:defaultDraw()
