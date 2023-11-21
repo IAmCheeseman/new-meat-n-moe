@@ -7,20 +7,20 @@ function Sprite:init(spritePath)
   self.image = love.graphics.newImage(spritePath)
 
   self.width, self.height = self.image:getDimensions()
-  self.frame = 0
+  self.frame = 1
   self.time = 0
 end
 
 function Sprite:initAnimation(hframes, vframes, animations)
   local frames = {}
   local tags = {}
-  local animation = ""
+  local animation
 
   local w, h = self.image:getWidth() / hframes, self.image:getHeight() / vframes
 
   local i = 1
-  for x=0, hframes-1 do
     for y=0, vframes-1 do
+  for x=0, hframes-1 do
       local canvas = love.graphics.newCanvas(w, h)
       local quad = love.graphics.newQuad(
           x * w, y * h,
@@ -33,17 +33,23 @@ function Sprite:initAnimation(hframes, vframes, animations)
 
       frames[i] = {
         image = canvas,
-        length = animations[i] or 0.1,
+        duration = animations[i] or 0.1,
       }
+
+      i = i + 1
     end
   end
 
   for k, v in pairs(animations) do
+    if not animation then
+      animation = k
+    end
     tags[k] = v
   end
 
   self.frames = frames
   self.tags = tags
+  self.animation = animation
   self.vframes = vframes
   self.hframes = hframes
   self.width = self.width / hframes
