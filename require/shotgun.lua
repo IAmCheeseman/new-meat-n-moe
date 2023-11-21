@@ -7,6 +7,9 @@ local Shotgun = core.Class(Gun)
 function Shotgun:init(boundObj)
   self:base("init", boundObj)
   self.sprite = assets.entities.meat_gun
+  self.sprite:setOffsetPreset("left", "center")
+
+  self.targetoffsety = self.sprite.height / 2
 end
 
 function Shotgun:shoot(mx, my)

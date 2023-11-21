@@ -7,6 +7,9 @@ local Pistol = core.Class(Gun)
 function Pistol:init(boundObj)
   self:base("init", boundObj)
   self.sprite = assets.entities.moe_gun
+  self.sprite:setOffsetPreset("left", "center")
+
+  self.targetoffsety = self.sprite.height / 2
 end
 
 function Pistol:onMousePressed(x, y, button, isTouch, presses)
