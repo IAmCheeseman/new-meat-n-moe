@@ -21,13 +21,10 @@ local function getViewportTransform(name)
   local sw, sh = v.width, v.height
   local ww, wh = love.graphics.getDimensions()
 
-  local w, h = ww, wh
-  local scale = w / sw < h / sh
-      and w / sw
-      or  h / sh
-  w = sw * scale
-  h = sh * scale
-  local x, y = (ww - w) / 2, (wh - h) / 2
+  local scale = math.min(ww / sw, wh / sh)
+  local x = (ww - sw * scale) / 2
+  local y = (wh - sh * scale) / 2
+
   return x, y, scale
 end
 
