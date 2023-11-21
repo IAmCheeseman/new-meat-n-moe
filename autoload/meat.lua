@@ -1,5 +1,5 @@
 local Player = require("require.player")
-local Pistol = require("require.pistol")
+local Shotgun = require("require.shotgun")
 
 local Meat = core.Class(Player)
 
@@ -16,7 +16,7 @@ function Meat:init()
   self.bloodSprite = assets.entities.meat_bloody
   self.bloodSprite:setOffsetPreset("center", "center")
 
-  self.gun = Pistol(self)
+  self.gun = Shotgun(self)
   core.objs:add(self.gun)
 end
 
