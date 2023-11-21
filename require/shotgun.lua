@@ -17,7 +17,7 @@ function Shotgun:shoot(mx, my)
   local spread = math.pi / 50
   local angle = core.math.angle(mx - self.x, my - self.y) - (spread * (total / 2))
 
-  for i=1, total do
+  for _=1, total do
     local bulletDir = angle
     local proj = Pellet(bulletDir, 400 + love.math.random() * 200)
     proj.x = self.x + math.cos(bulletDir) * 5
