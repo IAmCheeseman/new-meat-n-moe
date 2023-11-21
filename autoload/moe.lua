@@ -8,6 +8,11 @@ function Moe:init()
 
   self.bob = 0
 
+  self.sprite = assets.entities.moe
+  self.sprite:setOffsetPreset("center", "center")
+  self.bloodSprite = assets.entities.moe_bloody
+  self.bloodSprite:setOffsetPreset("center", "center")
+
   self.gun = Pistol(self)
   core.objs:add(self.gun)
 end

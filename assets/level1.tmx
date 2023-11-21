@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" parallaxoriginx="0.5" parallaxoriginy="0.5" nextlayerid="4" nextobjectid="4">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" parallaxoriginx="0.5" parallaxoriginy="0.5" nextlayerid="4" nextobjectid="5">
  <editorsettings>
   <export target="level1.lua" format="lua"/>
  </editorsettings>
@@ -8,6 +8,7 @@
  </properties>
  <tileset firstgid="1" source="office_tiles.tsx"/>
  <tileset firstgid="56" source="objects.tsx"/>
+ <tileset firstgid="58" source="objects.tsx"/>
  <imagelayer id="3" name="Image" repeatx="1" repeaty="1">
   <image source="world/floor.png" width="64" height="64"/>
   <properties>
@@ -42,6 +43,6 @@
 </data>
  </layer>
  <objectgroup id="2" name="Obj">
-  <object id="3" template="moe.tx" name="Player" type="Moe" x="176" y="144"/>
+  <object id="4" template="meat.tx" type="Meat" x="176" y="144"/>
  </objectgroup>
 </map>

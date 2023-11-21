@@ -19,11 +19,6 @@ function Player:init()
   self.accel = 5
   self.frict = 10
 
-  self.sprite = assets.entities.moe
-  self.sprite:setOffsetPreset("center", "center")
-  self.bloodSprite = assets.entities.moe_bloody
-  self.bloodSprite:setOffsetPreset("center", "center")
-
   self.stateMachine = core.StateMachine(self)
       :addState("default", {
         update = self.defaultUpdate,
@@ -60,13 +55,18 @@ function Player:draw()
   self.stateMachine:draw()
 end
 
-function Player:defaultUpdate(dt)
+function Player:getInputVector()
   local ix, iy = 0, 0
   if love.keyboard.isDown(controls.keys.up) then iy = iy - 1 end
   if love.keyboard.isDown(controls.keys.left) then ix = ix - 1 end
   if love.keyboard.isDown(controls.keys.down) then iy = iy + 1 end
   if love.keyboard.isDown(controls.keys.right) then ix = ix + 1 end
   ix, iy = core.math.normalize(ix, iy)
+  return ix, iy
+end
+
+function Player:defaultUpdate(dt)
+  local ix, iy = self:getInputVector()
 
   local accel = self.accel
   if core.math.dot(ix, iy, self.vx, self.vy) < 0.5 then
