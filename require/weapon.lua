@@ -13,8 +13,8 @@ function Weapon:init(boundObj)
 end
 
 function Weapon:update(dt)
-  self.x = core.math.lerp(self.x, self.boundObj.x + self.targetoffsetx, self.trackSpeed * dt)
-  self.y = core.math.lerp(self.y, self.boundObj.y + self.targetoffsety, self.trackSpeed * dt)
+  self.x = core.math.lerp(self.x, self.boundObj.x + self.targetOffsetX, self.trackSpeed * dt)
+  self.y = core.math.lerp(self.y, self.boundObj.y + self.targetOffsetY, self.trackSpeed * dt)
 end
 
 function Weapon:attack()
