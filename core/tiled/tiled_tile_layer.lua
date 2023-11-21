@@ -13,6 +13,7 @@ function TiledTileLayer:init(layer)
   self.width = layer.width
   self.height = layer.height
   self.tiles = layer.data
+  self.name = layer.name
 
   self.spriteBatches = {}
   self:initSpriteBatches()

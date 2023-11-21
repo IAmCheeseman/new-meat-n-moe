@@ -35,7 +35,7 @@ function Gun:update(dt)
     end
   end
 
-  self.zIndex = math.floor(self.y)
+  self.zIndex = self.boundObj.y + 1
 
   self.offsetx = core.math.lerp(self.offsetx, 0, 10 * dt)
   self.offsety = core.math.lerp(self.offsety, 0, 10 * dt)

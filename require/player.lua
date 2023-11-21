@@ -65,6 +65,7 @@ end
 
 function Player:update(dt)
   self.stateMachine:update(dt)
+  self.zIndex = self.y
 end
 
 function Player:draw()
