@@ -50,8 +50,6 @@ function ObjList:draw()
     return a.zIndex < b.zIndex
   end)
 
-  print(self.objects:len())
-
   for i, obj in self.objects:iter() do
     if self.objectMetadata[obj] then
       self.objectMetadata[obj].index = i
