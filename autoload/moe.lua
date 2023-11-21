@@ -1,5 +1,6 @@
 local Player = require("require.player")
 local Pistol = require("require.pistol")
+local characters = require("require.characters")
 
 local Moe = core.Class(Player)
 
@@ -30,6 +31,10 @@ function Moe:defaultDraw()
   local y = math.floor(self.y + self.bob)
   local x = math.floor(self.x)
   local scalex = mx > self.x and -1 or 1
+  local active = characters.getActive()
+  if active ~= self then
+    scalex = active.x > self.x and -1 or 1
+  end
 
   self.sprite:draw(x, y, 0, scalex, 1)
 

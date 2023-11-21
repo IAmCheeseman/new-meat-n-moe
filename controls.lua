@@ -4,6 +4,8 @@ local keys = {
   down       = "s",
   right      = "d",
 
+  swap       = "e",
+
   ability1   = "shift",
   ability2   = "space",
 

@@ -1,5 +1,6 @@
 local Player = require("require.player")
 local Shotgun = require("require.shotgun")
+local characters = require("require.characters")
 
 local Meat = core.Class(Player)
 
@@ -25,12 +26,21 @@ function Meat:defaultUpdate(dt)
   self.sprite:update(dt)
 end
 
+function Meat:inactiveUpdate(dt)
+  self:base("inactiveUpdate", dt)
+  self.sprite:update(dt)
+end
+
 function Meat:defaultDraw()
   local mx, _ = core.viewport.getMousePosition("main")
 
   local y = math.floor(self.y)
   local x = math.floor(self.x)
   local scalex = mx > self.x and -1 or 1
+  local active = characters.getActive()
+  if active ~= self then
+    scalex = active.x > self.x and -1 or 1
+  end
 
   self.sprite:draw(x, y, 0, scalex, 1)
 

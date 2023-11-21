@@ -1,6 +1,6 @@
 local Weapon = require("require.weapon")
-local Projectile = require("require.projectile")
 local controls = require("controls")
+local characters = require("require.characters")
 
 local Gun = core.Class(Weapon)
 
@@ -19,12 +19,20 @@ end
 function Gun:update(dt)
   self:base("update", dt)
 
-  local mx, my = core.viewport.getMousePosition("main")
-  self.rotation = core.math.angleBetween(self.x, self.y, mx, my)
+  if characters.getActive() == self.boundObj then
+    local mx, my = core.viewport.getMousePosition("main")
+    self.rotation = core.math.angleBetween(self.x, self.y, mx, my)
 
-  self.scaley = 1
-  if self.x > mx then
-    self.scaley = -1
+    self.scaley = 1
+    if self.x > mx then
+      self.scaley = -1
+    end
+  else
+    self.rotation = core.math.angle(self.boundObj.vx, self.boundObj.vy)
+    self.scaley = 1
+    if self.boundObj.vx < 0 then
+      self.scaley = -1
+    end
   end
 
   self.zIndex = math.floor(self.y)
@@ -36,7 +44,9 @@ function Gun:update(dt)
 end
 
 function Gun:onMousePressed(x, y, button, isTouch, presses)
-  if button == controls.mouse.weapon1 and self.cooldown.isOver then
+  local isActive = characters.getActive() == self.boundObj
+  local cooldownOver = self.cooldown.isOver
+  if button == controls.mouse.weapon1 and cooldownOver and isActive then
     local mx, my = core.viewport.getMousePosition("main")
     self:shoot(mx, my)
     self.cooldown:start()

@@ -9,7 +9,7 @@ function StateMachine:init(obj)
 end
 
 function StateMachine:setState(name)
-  if self.current and self.state[self.current].exit then
+  if self.current and self.states[self.current].exit then
     self.states[self.current].exit(self.obj)
   end
   self.current = name
