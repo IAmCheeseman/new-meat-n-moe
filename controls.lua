@@ -1,11 +1,13 @@
 local keys = {
-  up      = "w",
-  left    = "a",
-  down    = "s",
-  right   = "d",
+  up         = "w",
+  left       = "a",
+  down       = "s",
+  right      = "d",
 
   ability1   = "shift",
   ability2   = "space",
+
+  fullscreen = "f11"
 }
 
 local mouse = {

@@ -1,3 +1,5 @@
+local controls = require("controls")
+
 love.graphics.setDefaultFilter("nearest", "nearest")
 
 core = require("core")
@@ -30,3 +32,11 @@ function love.load()
   end
 end
 
+local fullscreen = love.window.getFullscreen()
+
+core.event.connect("keyPressed", function(key, isRepeat)
+  if key == controls.keys.fullscreen then
+    fullscreen = not fullscreen
+    love.window.setFullscreen(fullscreen, "desktop")
+  end
+end)
