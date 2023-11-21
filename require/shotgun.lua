@@ -1,5 +1,5 @@
 local Weapon = require("require.weapon")
-local Projectile = require("require.projectile")
+local Pellet = require("require.pellet")
 local controls = require("controls")
 
 local Pistol = core.Class(Weapon)
@@ -36,7 +36,7 @@ function Pistol:onMousePressed(x, y, button, isTouch, presses)
 
     for i=1, total do
       local bulletDir = angle
-      local proj = Projectile(bulletDir, 400 + love.math.random() * 200)
+      local proj = Pellet(bulletDir, 400 + love.math.random() * 200)
       proj.x = self.x + math.cos(bulletDir) * 5
       proj.y = self.y + math.sin(bulletDir) * 5
 

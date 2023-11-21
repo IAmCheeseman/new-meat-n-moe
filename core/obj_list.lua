@@ -46,9 +46,11 @@ function ObjList:update(dt)
 end
 
 function ObjList:draw()
-  self.objects:sort(function(a, b)
-    return a.zIndex < b.zIndex
-  end)
+  if self.objects:len() > 0 then
+    self.objects:sort(function(a, b)
+      return a.zIndex < b.zIndex
+    end)
+  end
 
   for i, obj in self.objects:iter() do
     if self.objectMetadata[obj] then
