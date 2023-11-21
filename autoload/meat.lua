@@ -19,6 +19,8 @@ function Meat:init()
   self.bloodSprite = assets.entities.meat_bloody
   self.bloodSprite:setOffsetPreset("center", "center")
 
+  self.speed = 90
+
   self.gun = Shotgun(self)
   core.objs:add(self.gun)
 end

@@ -117,12 +117,13 @@ function Player:inactiveUpdate(dt)
 
   if dist > 16 then
     local accel = self.accel
+    local speed = characters.getActive().speed
     if core.math.dot(dx, dy, self.vx, self.vy) < 0.5 then
       accel = self.frict
     end
 
-    self.vx = core.math.lerp(self.vx, dx * self.speed, accel * dt)
-    self.vy = core.math.lerp(self.vy, dy * self.speed, accel * dt)
+    self.vx = core.math.lerp(self.vx, dx * speed, accel * dt)
+    self.vy = core.math.lerp(self.vy, dy * speed, accel * dt)
   else
     self.vx = core.math.lerp(self.vx, 0, self.frict * dt)
     self.vy = core.math.lerp(self.vy, 0, self.frict * dt)
