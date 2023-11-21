@@ -23,7 +23,7 @@ function Player:init()
   self.vy = 0
 
   self.n = core.assets.noise(11, 11, 0.5, 1)
-  self.blood = love.graphics.newShader("blood.frag")
+  self.blood = love.graphics.newShader("vfx/blood.frag")
   self.blood:send("noise", self.n)
   self.blood:send("strength", 0)
 

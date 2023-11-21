@@ -4,10 +4,12 @@ local characters = require("require.characters")
 
 local Meat = core.Class(Player)
 
-assets.entities.meat:initAnimation(6, 3, {
+local animations = {
   idle = { from=1, to=2 },
   walk = { from=7, to=11 },
-})
+}
+assets.entities.meat:initAnimation(6, 3, animations)
+assets.entities.meat_bloody:initAnimation(6, 3, animations)
 
 function Meat:init()
   self:base("init")
@@ -24,11 +26,13 @@ end
 function Meat:defaultUpdate(dt)
   self:base("defaultUpdate", dt)
   self.sprite:update(dt)
+  self.bloodSprite.frame = self.sprite.frame
 end
 
 function Meat:inactiveUpdate(dt)
   self:base("inactiveUpdate", dt)
   self.sprite:update(dt)
+  self.bloodSprite.frame = self.sprite.frame
 end
 
 function Meat:defaultDraw()
@@ -48,8 +52,10 @@ function Meat:defaultDraw()
 
   if core.math.length(ix, iy) ~= 0 then
     self.sprite:play("walk")
+    self.bloodSprite:play("walk")
   else
     self.sprite:play("idle")
+    self.bloodSprite:play("idle")
   end
 
   love.graphics.setShader(self.blood)
