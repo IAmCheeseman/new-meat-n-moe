@@ -34,8 +34,8 @@ end
 function Meat:defaultDraw()
   local mx, _ = core.viewport.getMousePosition("main")
 
-  local y = math.floor(self.y)
   local x = math.floor(self.x)
+  local y = math.floor(self.y)
   local scalex = mx > self.x and -1 or 1
   local active = characters.getActive()
   if active ~= self then
