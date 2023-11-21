@@ -21,7 +21,7 @@ function Pellet:update(dt)
 end
 
 function Pellet:draw()
-  self.sprite:draw(self.x, self.y, self.dir, self.time / self.totalTime, 1)
+  self.sprite:draw(self.x, self.y, self.dir, self.time / self.totalTime, 1.5)
 end
 
 return Pellet

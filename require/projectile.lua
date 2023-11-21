@@ -11,6 +11,7 @@ function Projectile:init(dir, speed)
 
   self.hitbox = core.DetectorBox {
     anchor = self,
+    x = -1.5, y = -1.5,
     w = 3, h = 3,
     mask = {"env"}
   }
