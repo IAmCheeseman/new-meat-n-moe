@@ -1,6 +1,7 @@
 local Player = require("require.player")
 local Shotgun = require("require.shotgun")
 local characters = require("require.characters")
+local drawShadow = require("require.shadow")
 
 local Meat = core.Class(Player)
 
@@ -15,9 +16,9 @@ function Meat:init()
   self:base("init")
 
   self.sprite = assets.entities.meat
-  self.sprite:setOffsetPreset("center", "center")
+  self.sprite:setOffsetPreset("center", "bottom")
   self.bloodSprite = assets.entities.meat_bloody
-  self.bloodSprite:setOffsetPreset("center", "center")
+  self.bloodSprite:setOffsetPreset("center", "bottom")
 
   self.speed = 90
 
@@ -42,6 +43,8 @@ function Meat:defaultDraw()
 
   local x = math.floor(self.x)
   local y = math.floor(self.y)
+  drawShadow(x, y, self.sprite)
+
   local scalex = mx > self.x and -1 or 1
   local active = characters.getActive()
   if active ~= self then

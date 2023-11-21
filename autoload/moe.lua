@@ -1,6 +1,7 @@
 local Player = require("require.player")
 local Pistol = require("require.pistol")
 local characters = require("require.characters")
+local drawShadow = require("require.shadow")
 
 local Moe = core.Class(Player)
 
@@ -10,9 +11,9 @@ function Moe:init()
   self.bob = 0
 
   self.sprite = assets.entities.moe
-  self.sprite:setOffsetPreset("center", "center")
+  self.sprite:setOffsetPreset("center", "bottom")
   self.bloodSprite = assets.entities.moe_bloody
-  self.bloodSprite:setOffsetPreset("center", "center")
+  self.bloodSprite:setOffsetPreset("center", "bottom")
 
   self.gun = Pistol(self)
   core.objs:add(self.gun)
@@ -42,8 +43,11 @@ end
 function Moe:defaultDraw()
   local mx, _ = core.viewport.getMousePosition("main")
 
-  local y = math.floor(self.y + self.bob)
   local x = math.floor(self.x)
+  local y = math.floor(self.y + self.bob)
+
+  drawShadow(x, math.floor(self.y), self.sprite)
+
   local scalex = mx > self.x and -1 or 1
   local active = characters.getActive()
   if active ~= self then
