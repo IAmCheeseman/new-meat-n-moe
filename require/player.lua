@@ -97,10 +97,17 @@ function Player:defaultUpdate(dt)
 
   local cw, ch = core.viewport.getSize("main")
   local cx, cy = core.viewport.getCameraPos("main")
+  local mx, my = core.viewport.getMousePosition("main")
+  local dist = core.math.distanceBetween(self.x, self.y, mx, my) * 0.2
+  dist = core.math.clamp(dist, 0, 16)
+  local angle = core.math.angleBetween(self.x, self.y, mx, my)
+
+  local tx = self.x - cw / 2 + math.cos(angle) * dist
+  local ty = self.y - ch / 2 + math.sin(angle) * dist
 
   core.viewport.setCameraPos("main",
-      core.math.lerp(cx, self.x - cw / 2, 12 * dt),
-      core.math.lerp(cy, self.y - ch / 2, 12 * dt))
+      core.math.lerp(cx, tx, 12 * dt),
+      core.math.lerp(cy, ty, 12 * dt))
 
   if characters.getActive() ~= self then
     self.stateMachine:setState("inactive")
