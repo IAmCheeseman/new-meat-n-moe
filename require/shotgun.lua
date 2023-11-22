@@ -15,6 +15,7 @@ end
 
 function Shotgun:shoot(mx, my)
   local shootSource = love.audio.newSource(shootSfx)
+  shootSource:setPitch(1 + love.math.random() * 0.2)
   shootSource:play()
 
   local total = 10

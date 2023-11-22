@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 4,
-  nextobjectid = 11,
+  nextobjectid = 12,
   parallaxorigin = {
     x = 0.5,
     y = 0.5
@@ -440,6 +440,20 @@ return {
           height = 13,
           rotation = 0,
           gid = 57,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 11,
+          name = "PistolSecurityGuard",
+          type = "",
+          shape = "rectangle",
+          x = 400,
+          y = 192,
+          width = 13,
+          height = 16,
+          rotation = 0,
+          gid = 58,
           visible = true,
           properties = {}
         }
