@@ -47,7 +47,7 @@ function Player:init()
     layers = {"player"},
     mask = {"env"},
     x = -6,
-    y = -6,
+    y = -12,
     w = 12,
     h = 12,
   }
@@ -57,7 +57,7 @@ function Player:init()
     layers = {"player"},
     mask = {"default"},
     x = -7,
-    y = -7,
+    y = -13,
     w = 14,
     h = 14
   }
