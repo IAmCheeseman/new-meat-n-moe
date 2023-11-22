@@ -72,7 +72,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="Obj">
-  <object id="9" template="meat.tx" x="208" y="181.091"/>
-  <object id="10" template="moe.tx" x="192" y="181.091"/>
+  <object id="10" template="moe.tx" x="207.75" y="182.5"/>
+  <object id="9" template="meat.tx" x="191.75" y="182.5"/>
  </objectgroup>
 </map>

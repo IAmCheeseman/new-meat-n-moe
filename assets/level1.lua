@@ -256,8 +256,8 @@ return {
       name = "objects",
       firstgid = 56,
       class = "",
-      tilewidth = 13,
-      tileheight = 13,
+      tilewidth = 21,
+      tileheight = 19,
       spacing = 0,
       margin = 0,
       columns = 0,
@@ -275,7 +275,7 @@ return {
       },
       properties = {},
       wangsets = {},
-      tilecount = 2,
+      tilecount = 4,
       tiles = {
         {
           id = 0,
@@ -290,6 +290,22 @@ return {
           y = 0,
           width = 13,
           height = 13
+        },
+        {
+          id = 2,
+          image = "entities/employee.png",
+          x = 0,
+          y = 0,
+          width = 13,
+          height = 16
+        },
+        {
+          id = 4,
+          image = "entities/shotgun_employee.png",
+          x = 0,
+          y = 0,
+          width = 21,
+          height = 19
         }
       }
     }
@@ -400,30 +416,30 @@ return {
       properties = {},
       objects = {
         {
-          id = 9,
-          name = "Meat",
-          type = "",
-          shape = "rectangle",
-          x = 208,
-          y = 181.091,
-          width = 13,
-          height = 13,
-          rotation = 0,
-          gid = 57,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 10,
           name = "Moe",
           type = "",
           shape = "rectangle",
-          x = 192,
-          y = 181.091,
+          x = 207.75,
+          y = 182.5,
           width = 11,
           height = 11,
           rotation = 0,
           gid = 56,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 9,
+          name = "Meat",
+          type = "",
+          shape = "rectangle",
+          x = 191.75,
+          y = 182.5,
+          width = 13,
+          height = 13,
+          rotation = 0,
+          gid = 57,
           visible = true,
           properties = {}
         }

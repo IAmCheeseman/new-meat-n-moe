@@ -41,16 +41,17 @@ function Gun:update(dt)
   self.offsety = core.math.lerp(self.offsety, 0, 10 * dt)
 
   self.cooldown:update(dt)
-end
 
-function Gun:onMousePressed(x, y, button, isTouch, presses)
   local isActive = characters.getActive() == self.boundObj
   local cooldownOver = self.cooldown.isOver
-  if button == controls.mouse.weapon1 and cooldownOver and isActive then
+  if love.mouse.isDown(controls.mouse.weapon1) and cooldownOver and isActive then
     local mx, my = core.viewport.getMousePosition("main")
     self:shoot(mx, my)
     self.cooldown:start()
   end
+end
+
+function Gun:onMousePressed(x, y, button, isTouch, presses)
 end
 
 function Gun:draw()
