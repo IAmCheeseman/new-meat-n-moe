@@ -36,13 +36,21 @@ core.event.connect("update", function()
     nextUpdate = love.timer.getTime() + 1
   end
 
+  -- Update elapsed time
   local time = os.difftime(os.time(os.date("*t")), start)
   local seconds = tostring(time % 60)
   if #seconds == 1 then
     seconds = "0" .. seconds
   end
   local minutes = tostring(math.floor(time % 3600 / 60))
+  if #minutes == 1 then
+    minutes = "0" .. minutes
+  end
+  local hours = tostring(math.floor(time / 3600))
   discord.presence.details = ("%s:%s elapsed"):format(minutes, seconds)
+  if hours ~= "0" then
+    discord.presence.details = hours .. ":" .. discord.presence.details
+  end
 
   discordRpc.runCallbacks()
 end)
