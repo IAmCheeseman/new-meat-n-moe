@@ -74,6 +74,10 @@ function ObjList:remove(obj)
   table.insert(self.removalQueue, 1, obj)
 end
 
+function ObjList:count()
+  return self.objects:len()
+end
+
 function ObjList:hasObj(obj)
   return self.objectMetadata[obj] ~= nil
 end
