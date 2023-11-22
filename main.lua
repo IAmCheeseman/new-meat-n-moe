@@ -12,10 +12,13 @@ core.tiled.setTilemapCollisionLayers("office", "env")
 core.callbacks()
 
 local Cursor = require("require.cursor")
+local discord = require("discord")
 
 local layers = {}
 
 function love.load()
+  discord.init()
+
   layers = core.tiled.openLevel(assetDirectory, "assets.level1")
 
   core.objs:add(Cursor())
@@ -30,6 +33,10 @@ function love.load()
       core.objs:add(v)
     end
   end
+end
+
+function love.quit()
+  discord.quit()
 end
 
 local fullscreen = love.window.getFullscreen()

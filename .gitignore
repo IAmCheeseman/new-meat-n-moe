@@ -1,2 +1,3 @@
 .luarc.json
+app_id.lua
 *.love
