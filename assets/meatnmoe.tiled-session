@@ -9,12 +9,15 @@
         "."
     ],
     "fileStates": {
+        "collision.tsx": {
+            "dynamicWrapping": false
+        },
         "level1.tmx": {
-            "scale": 4,
-            "selectedLayer": 2,
+            "scale": 1.5,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 333.25,
-                "y": 188
+                "x": 358,
+                "y": 336.66666666666663
             }
         },
         "levels/level1.tmx": {
@@ -55,9 +58,9 @@
     "project": "meatnmoe.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "level1.tmx",
         "office_tiles.tsx",
         "objects.tsx",
-        "level1.tmx",
         "levels/office_tiles.tsx",
         "levels/level1.tmx"
     ],
@@ -66,5 +69,5 @@
         "height": 16,
         "width": 16
     },
-    "tileset.type": 1
+    "tileset.type": 0
 }

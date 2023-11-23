@@ -24,6 +24,7 @@ core.math           = require(path .. ".mathf")
 core.assets         = require(path .. ".asset_loader")
 core.viewport       = require(path .. ".viewport")
 core.tiled          = require(path .. ".tiled")
+core.pathfinding    = require(path .. ".pathfinding")
 
 core.viewport.create("main", 320, 180, true)
 core.viewport.create("gui", 320, 180, false)
