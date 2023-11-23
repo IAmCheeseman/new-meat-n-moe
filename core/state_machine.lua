@@ -20,6 +20,10 @@ function StateMachine:setState(name)
   return self
 end
 
+function StateMachine:getState(name)
+  return self.current
+end
+
 function StateMachine:addState(name, callbacks)
   self.states[name] = callbacks
   return self
