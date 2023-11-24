@@ -28,6 +28,7 @@ function Shotgun:shoot(mx, my)
     proj.damage = 3
     proj.x = self.x + math.cos(bulletDir) * 5
     proj.y = self.y + math.sin(bulletDir) * 5
+    proj.damageMask = "enemy"
 
     core.objs:add(proj)
 

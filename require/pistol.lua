@@ -22,6 +22,7 @@ function Pistol:shoot(mx, my)
   local proj = Projectile(angle, 400)
   proj.x = self.x + math.cos(angle) * 7
   proj.y = self.y + math.sin(angle) * 7
+  proj.damageMask = "enemy"
 
   core.objs:add(proj)
 

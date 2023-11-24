@@ -43,7 +43,7 @@ function SecurityGuard:init()
     anchor = self,
     x = -7, y = -13,
     w = 14, h = 14,
-    layers = {"hurtbox"},
+    layers = {"enemy", "hurtbox"},
     mask = {"bullet"},
   }
 
@@ -186,6 +186,7 @@ function SecurityGuard:attackUpdate(dt)
     local bullet = self.bullet(angle, 200)
     bullet.x, bullet.y = bx, by
     bullet.sprite = assets.entities.enemy_bullet
+    bullet.damageMask = "player"
 
     core.objs:add(bullet)
 

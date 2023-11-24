@@ -21,6 +21,12 @@ function Projectile:init(dir, speed)
   self.zIndex = 10
 end
 
+function Projectile:damageObj(obj)
+  if obj:takeDamage(self.damage, self.dir, self.speed * 0.1) then
+    core.objs:remove(self)
+  end
+end
+
 function Projectile:update(dt)
   self.x = self.x + math.cos(self.dir) * self.speed * dt
   self.y = self.y + math.sin(self.dir) * self.speed * dt
@@ -34,8 +40,10 @@ function Projectile:update(dt)
         error("Object with hurtbox does not have `takeDamage` method.")
       end
 
-      if obj:takeDamage(self.damage, self.dir, self.speed * 0.1) then
-        core.objs:remove(self)
+      if self.damageMask and box:isInLayer(self.damageMask) then
+        self:damageObj(obj)
+      elseif not self.damageMask then
+        self:damageObj(obj)
       end
     end
   end
