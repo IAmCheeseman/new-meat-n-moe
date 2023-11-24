@@ -58,6 +58,8 @@ end
 function SecurityGuard:update(dt)
   self.stateMachine:update(dt)
   self.sprite:update(dt)
+
+  self.zIndex = self.y
 end
 
 function SecurityGuard:idleUpdate(dt)
@@ -111,7 +113,7 @@ function SecurityGuard:defaultUpdate(dt, invertDir)
       math.floor(active.y / 16), 2)
 
   local dirx, diry
-  if self.path then
+  if self.path and self.path._nodes[2] then
     local nextx, nexty = self.path._nodes[2]:getPos()
     nextx = nextx * 16
     nexty = nexty * 16

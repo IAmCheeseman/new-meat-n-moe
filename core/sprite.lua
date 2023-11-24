@@ -1,5 +1,6 @@
 local path = (...):gsub("%.sprite$", "")
 local Class = require(path .. ".class")
+local event = require(path .. ".event")
 
 local Sprite = Class()
 
@@ -9,6 +10,9 @@ function Sprite:init(spritePath)
   self.width, self.height = self.image:getDimensions()
   self.frame = 1
   self.time = 0
+  self.path = spritePath
+
+  -- event.connect("update", self.update, self)
 end
 
 function Sprite:initAnimation(hframes, vframes, animations)
@@ -19,20 +23,15 @@ function Sprite:initAnimation(hframes, vframes, animations)
   local w, h = self.image:getWidth() / hframes, self.image:getHeight() / vframes
 
   local i = 1
-    for y=0, vframes-1 do
-  for x=0, hframes-1 do
-      local canvas = love.graphics.newCanvas(w, h)
+  for y=0, vframes-1 do
+    for x=0, hframes-1 do
       local quad = love.graphics.newQuad(
           x * w, y * h,
           w, h,
           self.image:getDimensions())
 
-      canvas:renderTo(function()
-        love.graphics.draw(self.image, quad, 0, 0)
-      end)
-
       frames[i] = {
-        image = canvas,
+        quad = quad,
         duration = animations[i] or 0.1,
       }
 
@@ -50,6 +49,7 @@ function Sprite:initAnimation(hframes, vframes, animations)
   self.frames = frames
   self.tags = tags
   self.animation = animation
+  self.inputAnimation = animations
   self.vframes = vframes
   self.hframes = hframes
   self.width = self.width / hframes
@@ -57,6 +57,15 @@ function Sprite:initAnimation(hframes, vframes, animations)
   if self.tags[animation] then
     self:play(animation)
   end
+end
+
+function Sprite:clone()
+  local cloned = Sprite(self.path)
+  if self.inputAnimation then
+    cloned:initAnimation(self.hframes, self.vframes, self.inputAnimation)
+  end
+
+  return cloned
 end
 
 function Sprite:play(name)
@@ -94,13 +103,15 @@ function Sprite:draw(x, y, r, sx, sy)
   sx = sx or 1
   sy = sy or sx
 
-  local image = self.image
+  local quad
   if self.frames then
-    image = self.frames[self.frame].image
+    quad = self.frames[self.frame].quad
+  else
+    quad = love.graphics.newQuad(0, 0, self.width, self.height, self.width, self.height)
   end
 
   love.graphics.setColor(1, 1, 1)
-  love.graphics.draw(image, x, y, r, sx, sy, self.offsetx, self.offsety)
+  love.graphics.draw(self.image, quad, x, y, r, sx, sy, self.offsetx, self.offsety)
 end
 
 function Sprite:setOffsetPreset(horizontal, vertical)

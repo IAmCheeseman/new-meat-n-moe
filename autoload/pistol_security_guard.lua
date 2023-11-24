@@ -16,8 +16,8 @@ function PistolSecurityGuard:init()
   self.gunOffsetX = 3
   self.gunOffsetY = -6
 
-  self.sprite = assets.entities.employee
-  self.gunSprite = assets.entities.employee_gun
+  self.sprite = assets.entities.employee:clone()
+  self.gunSprite = assets.entities.employee_gun:clone()
 
   self.sprite:setOffsetPreset("center", "bottom")
   self.gunSprite:setOffsetPreset("left", "center")

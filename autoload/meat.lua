@@ -15,9 +15,9 @@ assets.entities.meat_bloody:initAnimation(6, 3, animations)
 function Meat:init()
   self:base("init")
 
-  self.sprite = assets.entities.meat
+  self.sprite = assets.entities.meat:clone()
   self.sprite:setOffsetPreset("center", "bottom")
-  self.bloodSprite = assets.entities.meat_bloody
+  self.bloodSprite = assets.entities.meat_bloody:clone()
   self.bloodSprite:setOffsetPreset("center", "bottom")
 
   self.speed = 90
