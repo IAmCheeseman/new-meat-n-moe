@@ -1,6 +1,7 @@
 local controls = require("controls")
 
 love.graphics.setDefaultFilter("nearest", "nearest")
+love.graphics.scale(0.4)
 
 core = require("core")
 assets = core.assets.load("assets")

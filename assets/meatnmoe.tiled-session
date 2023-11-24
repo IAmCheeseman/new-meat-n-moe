@@ -13,11 +13,11 @@
             "dynamicWrapping": false
         },
         "level1.tmx": {
-            "scale": 3,
+            "scale": 4,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 304,
-                "y": 210.66666666666666
+                "x": 309.5,
+                "y": 195.75
             }
         },
         "levels/level1.tmx": {

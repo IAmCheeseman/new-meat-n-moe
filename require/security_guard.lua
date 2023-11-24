@@ -128,17 +128,12 @@ end
 
 function SecurityGuard:defaultUpdate(dt, invertDir)
   local active = characters.getActive()
-  self.path = core.pathfinding.getPath(
-      math.floor(self.x / 16),
-      math.floor(self.y / 16),
-      math.floor(active.x / 16),
-      math.floor(active.y / 16), 2)
+
+  self.path = core.pathfinding.getPath(self.x, self.y, active.x, active.y)
 
   local dirx, diry
-  if self.path and self.path._nodes[2] then
-    local nextx, nexty = self.path._nodes[2]:getPos()
-    nextx = nextx * 16
-    nexty = nexty * 16
+  if self.path and self.path._nodes[3] then
+    local nextx, nexty = core.pathfinding.nodeToWorld(self.path._nodes[3])
     dirx, diry = core.math.directionTo(self.x, self.y, nextx, nexty)
   else
     dirx, diry = core.math.directionTo(self.x, self.y, active.x, active.y)
@@ -199,23 +194,21 @@ function SecurityGuard:draw()
     local scaley = active.x < self.x and -1 or 1
     self.gunSprite:draw(x + self.gunOffsetX * self.scalex, y + self.gunOffsetY, angle, 1, scaley)
   end
-  --
-  -- if self.path then
-  --   local lx, ly
-  --   love.graphics.setColor(1, 0, 0)
-  --   for node, _ in self.path:nodes() do
-  --     local dx, dy = node:getPos()
-  --     dx = dx * 16
-  --     dy = dy * 16
-  --
-  --     if lx and ly then
-  --       love.graphics.line(dx, dy, lx, ly)
-  --     end
-  --
-  --     lx, ly = dx, dy
-  --   end
-  --   love.graphics.setColor(1, 1, 1)
-  -- end
+
+  if self.path then
+    local lx, ly
+    love.graphics.setColor(1, 0, 0)
+    for node, _ in self.path:nodes() do
+      local dx, dy = core.pathfinding.nodeToWorld(node)
+
+      if lx and ly then
+        love.graphics.line(dx, dy, lx, ly)
+      end
+
+      lx, ly = dx, dy
+    end
+    love.graphics.setColor(1, 1, 1)
+  end
 end
 
 return SecurityGuard

@@ -50,9 +50,9 @@ function Player:init(maxHealth)
     layers = {"player"},
     mask = {"env"},
     x = -6,
-    y = -12,
+    y = -6,
     w = 12,
-    h = 12,
+    h = 8,
   }
 
   self.hurtbox = core.DetectorBox {
