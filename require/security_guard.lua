@@ -33,7 +33,7 @@ function SecurityGuard:init()
     x = -6,
     y = -12,
     w = 12,
-    h = 12,
+    h = 14,
   }
 
   self.hurtbox = core.DetectorBox {
@@ -196,18 +196,7 @@ function SecurityGuard:draw()
   end
 
   if self.path then
-    local lx, ly
-    love.graphics.setColor(1, 0, 0)
-    for node, _ in self.path:nodes() do
-      local dx, dy = core.pathfinding.nodeToWorld(node)
-
-      if lx and ly then
-        love.graphics.line(dx, dy, lx, ly)
-      end
-
-      lx, ly = dx, dy
-    end
-    love.graphics.setColor(1, 1, 1)
+    core.pathfinding.drawPath(self.path)
   end
 end
 

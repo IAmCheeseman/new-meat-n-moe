@@ -36,6 +36,23 @@ function pathfinding.worldToNode(x, y)
   return nx, ny
 end
 
+function pathfinding.drawPath(path)
+  assert(type(path) == "table", "Exepected path to be a table. Got " .. type(path))
+
+  local lx, ly
+  love.graphics.setColor(1, 0, 0)
+  for node, _ in path:nodes() do
+    local dx, dy = core.pathfinding.nodeToWorld(node)
+
+    if lx and ly then
+      love.graphics.line(dx, dy, lx, ly)
+    end
+
+    lx, ly = dx, dy
+  end
+  love.graphics.setColor(1, 1, 1)
+end
+
 function pathfinding.initWithTileLayer(layer, walkable)
   walkable = walkable or 0
   local map = {}
