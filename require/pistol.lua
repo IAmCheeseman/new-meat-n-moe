@@ -20,8 +20,8 @@ function Pistol:shoot(mx, my)
 
   local angle = core.math.angle(mx - self.x, my - self.y)
   local proj = Projectile(angle, 400)
-  proj.x = self.x + math.cos(angle) * 5
-  proj.y = self.y + math.sin(angle) * 5
+  proj.x = self.x + math.cos(angle) * 7
+  proj.y = self.y + math.sin(angle) * 7
 
   core.objs:add(proj)
 
