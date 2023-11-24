@@ -6,7 +6,7 @@ local drawShadow = require("require.shadow")
 local Moe = core.Class(Player)
 
 function Moe:init()
-  self:base("init")
+  self:base("init", 100)
 
   self.bob = 0
 

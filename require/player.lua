@@ -12,10 +12,13 @@ end
 
 core.event.connect("keyPressed", onKeyPressed)
 
-function Player:init()
+function Player:init(maxHealth)
   self:base("init")
 
   characters.init(self)
+
+  self.maxHealth = maxHealth
+  self.health = maxHealth
 
   self.x = 0
   self.y = 0
@@ -52,15 +55,30 @@ function Player:init()
     h = 12,
   }
 
-  self.hitbox = core.DetectorBox {
+  self.hurtbox = core.DetectorBox {
     anchor = self,
-    layers = {"player"},
+    layers = {"player", "hurtbox"},
     mask = {"default"},
     x = -7,
     y = -13,
     w = 14,
     h = 14
   }
+end
+
+function Player:takeDamage(amount, kbDir, kbStrength)
+  if characters.getActive() == self then
+    self.health = self.health - amount
+    if self.health <= 0 then
+      characters.swap()
+      core.objs:remove(self)
+    end
+  end
+
+  self.vx = self.vx + math.cos(kbDir) * kbStrength
+  self.vy = self.vy + math.sin(kbDir) * kbStrength
+
+  return true
 end
 
 function Player:update(dt)

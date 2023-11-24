@@ -5,6 +5,7 @@ function Projectile:init(dir, speed)
 
   self.dir = dir
   self.speed = speed
+  self.damage = 10
 
   self.sprite = assets.entities.bullet
   self.sprite:setOffsetPreset("center", "center")
@@ -13,7 +14,8 @@ function Projectile:init(dir, speed)
     anchor = self,
     x = -1.5, y = -1.5,
     w = 3, h = 3,
-    mask = {"env"}
+    layers = {"bullet"},
+    mask = {"env", "hurtbox"},
   }
 
   self.zIndex = 10
@@ -27,11 +29,15 @@ function Projectile:update(dt)
     if box:isInLayer("env") then
       core.objs:remove(self)
       break
-    end
+    elseif box:isInLayer("hurtbox") then
+      if not obj.takeDamage then
+        error("Object with hurtbox does not have `takeDamage` method.")
+      end
 
-    -- if obj.takeDamage then
-    --   obj:takeDamage()
-    -- end
+      if obj:takeDamage(self.damage, self.dir, self.speed * 0.1) then
+        core.objs:remove(self)
+      end
+    end
   end
 end
 

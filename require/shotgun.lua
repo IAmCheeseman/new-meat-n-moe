@@ -25,6 +25,7 @@ function Shotgun:shoot(mx, my)
   for _=1, total do
     local bulletDir = angle
     local proj = Pellet(bulletDir, 400 + love.math.random() * 200)
+    proj.damage = 3
     proj.x = self.x + math.cos(bulletDir) * 5
     proj.y = self.y + math.sin(bulletDir) * 5
 

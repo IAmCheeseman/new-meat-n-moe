@@ -13,7 +13,7 @@ assets.entities.meat:initAnimation(6, 3, animations)
 assets.entities.meat_bloody:initAnimation(6, 3, animations)
 
 function Meat:init()
-  self:base("init")
+  self:base("init", 130)
 
   self.sprite = assets.entities.meat:clone()
   self.sprite:setOffsetPreset("center", "bottom")

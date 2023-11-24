@@ -36,6 +36,16 @@ function SecurityGuard:init()
     h = 12,
   }
 
+  self.hurtbox = core.DetectorBox {
+    anchor = self,
+    x = -7, y = -13,
+    w = 14, h = 14,
+    layers = {"hurtbox"},
+    mask = {"bullet"},
+  }
+
+  self.health = 20
+
   self.stateMachine = core.StateMachine(self)
     :addState("idle", {
       update = self.idleUpdate,
@@ -53,6 +63,18 @@ function SecurityGuard:init()
     :setState("idle")
 
   self.path = nil
+end
+
+function SecurityGuard:takeDamage(amount, kbDir, kbStrength)
+  self.health = self.health - amount
+  if self.health <= 0 then
+    core.objs:remove(self)
+  end
+
+  self.vx = self.vx + math.cos(kbDir) * kbStrength
+  self.vy = self.vy + math.sin(kbDir) * kbStrength
+
+  return true
 end
 
 function SecurityGuard:update(dt)
@@ -153,7 +175,7 @@ function SecurityGuard:attackUpdate(dt)
 
   if self.shootTimer.isOver then
     local angle = core.math.angleBetween(self.x, self.y, active.x, active.y)
-    local bx, by = self.x + math.cos(angle) * 4, self.y - 6 + math.sin(angle) * 4
+    local bx, by = self.x + math.cos(angle) * 7, self.y - 6 + math.sin(angle) * 7
 
     local bullet = self.bullet(angle, 200)
     bullet.x, bullet.y = bx, by
