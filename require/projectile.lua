@@ -18,7 +18,7 @@ function Projectile:init(dir, speed)
     mask = {"env", "hurtbox"},
   }
 
-  self.zIndex = 10
+  self.zIndex = -1
 end
 
 function Projectile:damageObj(obj)
