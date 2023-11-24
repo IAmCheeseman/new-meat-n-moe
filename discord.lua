@@ -9,7 +9,7 @@ discord.presence = {
   largeImageKey = "mnm_rpc",
   largeImageText = "Meat n' Moe",
   state = "<unnamed level>",
-  details = "<time> elapsed",
+  details = "00:00 elapsed",
 }
 
 if connectDiscord then

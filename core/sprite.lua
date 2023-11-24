@@ -61,6 +61,9 @@ end
 
 function Sprite:clone()
   local cloned = Sprite(self.path)
+  cloned.offsetx = self.offsetx
+  cloned.offsety = self.offsety
+
   if self.inputAnimation then
     cloned:initAnimation(self.hframes, self.vframes, self.inputAnimation)
   end

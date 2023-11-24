@@ -1,8 +1,11 @@
 local Projectile = require("require.projectile")
+local Corpse = require("require.corpse")
 
 local SecurityGuard = core.Class(core.GameObj)
 local characters = require("require.characters")
 local drawShadow = require("require.shadow")
+
+assets.entities.employee_corpse:setOffsetPreset("center", "bottom")
 
 function SecurityGuard:init()
   self:base("init")
@@ -67,12 +70,20 @@ end
 
 function SecurityGuard:takeDamage(amount, kbDir, kbStrength)
   self.health = self.health - amount
-  if self.health <= 0 then
-    core.objs:remove(self)
-  end
-
   self.vx = self.vx + math.cos(kbDir) * kbStrength
   self.vy = self.vy + math.sin(kbDir) * kbStrength
+
+  if self.health <= 0 and not self.isDead then
+    self.isDead = true
+
+    core.objs:remove(self)
+
+    local sprite = assets.entities.employee_corpse:clone()
+    local corpse = Corpse(self.vx, self.vy, sprite)
+    corpse.x = self.x
+    corpse.y = self.y
+    core.objs:add(corpse)
+  end
 
   return true
 end
