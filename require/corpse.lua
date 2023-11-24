@@ -10,8 +10,8 @@ function Corpse:init(vx, vy, sprite)
 
   self.box = core.ResolverBox {
     anchor = self,
-    x = -sprite.width * 0.5 + sprite.offsetx,
-    y = -sprite.height * 0.5 + sprite.offsety,
+    x = -sprite.offsetx,
+    y = -sprite.offsety,
     w = sprite.width,
     h = sprite.height,
     layers = {"none"},
