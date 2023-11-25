@@ -54,7 +54,7 @@ function physics.deleteObj(obj)
     end
   end
 
-  objects[obj] = {}
+  objects[obj] = nil
 end
 
 function physics.addToLayer(box, layer, type)
