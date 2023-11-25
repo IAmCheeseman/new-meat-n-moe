@@ -27,10 +27,9 @@ function Corpse:update(dt)
 
   self.zIndex = self.y
 
-  if core.math.length(self.vx, self.vy) < 1 then
-    -- TODO: draw to a non-clearing canvas
-    core.objs:remove(self)
-  end
+  -- if core.math.length(self.vx, self.vy) < 1 then
+  --   core.objs:remove(self)
+  -- end
 end
 
 function Corpse:draw()
