@@ -33,7 +33,7 @@ function blood.add(x, y, r, g, b)
   love.graphics.setCanvas(canvas)
   bloodSplats.frame = love.math.random(1, bloodSplats.hframes)
   bloodSplats.modulate = {r, g, b}
-  bloodSplats:draw(x, y, core.math.frandom(0, math.pi * 2))
+  bloodSplats:draw(x, y, core.math.frandom(0, math.pi * 2), core.math.frandom(0.8, 1.2))
   love.graphics.setColor(1, 1, 1)
   love.graphics.setCanvas(prevCanvas)
 end
