@@ -207,9 +207,9 @@ function SecurityGuard:draw()
     self.gunSprite:draw(x + self.gunOffsetX * self.scalex, y + self.gunOffsetY, angle, 1, scaley)
   end
 
-  if self.path then
-    core.pathfinding.drawPath(self.path)
-  end
+  -- if self.path then
+  --   core.pathfinding.drawPath(self.path)
+  -- end
 end
 
 return SecurityGuard
