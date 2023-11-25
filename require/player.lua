@@ -72,6 +72,7 @@ function Player:takeDamage(amount, kbDir, kbStrength)
     if self.health <= 0 then
       characters.swap()
       core.objs:remove(self)
+      core.objs:remove(self.gun)
     end
   end
 
