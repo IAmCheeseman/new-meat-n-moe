@@ -11,6 +11,7 @@ function Sprite:init(spritePath)
   self.frame = 1
   self.time = 0
   self.path = spritePath
+  self.modulate = {1, 1, 1}
 
   -- event.connect("update", self.update, self)
 end
@@ -113,7 +114,7 @@ function Sprite:draw(x, y, r, sx, sy)
     quad = love.graphics.newQuad(0, 0, self.width, self.height, self.width, self.height)
   end
 
-  love.graphics.setColor(1, 1, 1)
+  love.graphics.setColor(unpack(self.modulate))
   love.graphics.draw(self.image, quad, x, y, r, sx, sy, self.offsetx, self.offsety)
 end
 
