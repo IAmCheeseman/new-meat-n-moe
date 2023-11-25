@@ -2,6 +2,7 @@ local Player = require("require.player")
 local Shotgun = require("require.shotgun")
 local characters = require("require.characters")
 local drawShadow = require("require.shadow")
+local blood = require("autoload.blood")
 
 local Meat = core.Class(Player)
 
@@ -24,6 +25,12 @@ function Meat:init()
 
   self.gun = Shotgun(self)
   core.objs:add(self.gun)
+end
+
+function Meat:takeDamage(...)
+  self:base("takeDamage", ...)
+
+  blood.add(self.x, self.y)
 end
 
 function Meat:defaultUpdate(dt)
