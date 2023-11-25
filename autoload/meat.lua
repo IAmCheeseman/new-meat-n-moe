@@ -1,5 +1,6 @@
 local Player = require("require.player")
 local Shotgun = require("require.shotgun")
+local Hand = require("require.hand")
 local characters = require("require.characters")
 local drawShadow = require("require.shadow")
 local blood = require("autoload.blood")
@@ -23,7 +24,7 @@ function Meat:init()
 
   self.speed = 90
 
-  self.gun = Shotgun(self)
+  self.gun = Hand(self)
   core.objs:add(self.gun)
 end
 
