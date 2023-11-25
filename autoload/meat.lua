@@ -28,9 +28,11 @@ function Meat:init()
 end
 
 function Meat:takeDamage(...)
-  self:base("takeDamage", ...)
+  local res = self:base("takeDamage", ...)
 
   blood.add(self.x, self.y)
+
+  return res
 end
 
 function Meat:defaultUpdate(dt)
