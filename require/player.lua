@@ -33,7 +33,7 @@ function Player:init(maxHealth)
   self.blood:send("strength", 0)
 
   self.glow = assets.images.glow:clone()
-  self.glow.modulate = {0.3, 0, 0.3}
+  self.glow.modulate = {0, 0.2, 0.5}
 
   self.speed = 110
   self.accel = 5
