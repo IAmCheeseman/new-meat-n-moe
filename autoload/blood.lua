@@ -1,6 +1,7 @@
 local canvas
 
 assets.effects.blood:initAnimation(3, 1, {})
+assets.effects.blood:setOffsetPreset("center", "center")
 local bloodSplats = assets.effects.blood:clone()
 
 local BloodDrawer = core.Class(core.GameObj)
