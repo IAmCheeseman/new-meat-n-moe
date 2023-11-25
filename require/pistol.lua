@@ -15,7 +15,7 @@ end
 
 function Pistol:shoot(mx, my)
   local shootSource = love.audio.newSource(shootSfx)
-  shootSource:setPitch(1 + love.math.random() * 0.2)
+  shootSource:setPitch(core.math.frandom(1, 1.2))
   shootSource:play()
 
   local angle = core.math.angle(mx - self.x, my - self.y)

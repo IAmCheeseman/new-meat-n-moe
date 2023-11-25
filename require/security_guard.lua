@@ -124,7 +124,7 @@ function SecurityGuard:chaseUpdate(dt)
 end
 
 function SecurityGuard:retreatEnter()
-  self.retreatTimer:start(0.5 + love.math.random())
+  self.retreatTimer:start(core.math.frandom(0.5, 1.5))
 end
 
 function SecurityGuard:retreatUpdate(dt)
@@ -191,7 +191,7 @@ function SecurityGuard:attackUpdate(dt)
     core.objs:add(bullet)
 
     self.stateMachine:setState("retreat")
-    self.shootTimer:start(love.math.random(self.minShootCooldown, self.maxShootCooldown))
+    self.shootTimer:start(core.math.frandom(self.minShootCooldown, self.maxShootCooldown))
   end
 end
 

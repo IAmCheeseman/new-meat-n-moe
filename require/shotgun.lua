@@ -15,7 +15,7 @@ end
 
 function Shotgun:shoot(mx, my)
   local shootSource = love.audio.newSource(shootSfx)
-  shootSource:setPitch(1 + love.math.random() * 0.2)
+  shootSource:setPitch(core.math.frandom(1, 1.2))
   shootSource:play()
 
   local total = 10
@@ -24,7 +24,8 @@ function Shotgun:shoot(mx, my)
 
   for _=1, total do
     local bulletDir = angle
-    local proj = Pellet(bulletDir, 400 + love.math.random() * 200)
+
+    local proj = Pellet(bulletDir, core.math.frandom(400, 600))
     proj.damage = 3
     proj.x = self.x + math.cos(bulletDir) * 5
     proj.y = self.y + math.sin(bulletDir) * 5

@@ -41,6 +41,10 @@ function mathf.snapped(a, step)
   return step
 end
 
+function mathf.frandom(a, b)
+  return a + love.math.random() * (b - a)
+end
+
 function mathf.length(x, y)
   return math.sqrt(x ^ 2 + y ^ 2)
 end
