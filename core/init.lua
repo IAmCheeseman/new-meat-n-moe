@@ -25,6 +25,7 @@ core.assets         = require(path .. ".asset_loader")
 core.viewport       = require(path .. ".viewport")
 core.tiled          = require(path .. ".tiled")
 core.pathfinding    = require(path .. ".pathfinding")
+core.level          = require(path .. ".level_loader")
 
 core.viewport.create("main", 320, 180, true)
 core.viewport.create("gui", 320, 180, false)
@@ -42,6 +43,8 @@ core.DetectorBox    = require(path .. ".physics.detector_box")
 local TiledObjSpawner = require(path .. ".tiled.tiled_object_spawner")
 
 core.objSpawner = TiledObjSpawner(app.objList)
+
+core.level.initialize(core.objs, core.objSpawner)
 
 local physics = require(path .. ".physics.physics")
 
