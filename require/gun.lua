@@ -12,8 +12,6 @@ function Gun:init(boundObj, cooldown)
   self.offsety = 0
 
   self.cooldown = core.Timer(cooldown)
-
-  core.event.connect("mousePressed", self.onMousePressed, self)
 end
 
 function Gun:update(dt)
@@ -49,9 +47,6 @@ function Gun:update(dt)
     self:shoot(mx, my)
     self.cooldown:start()
   end
-end
-
-function Gun:onMousePressed(x, y, button, isTouch, presses)
 end
 
 function Gun:draw()
