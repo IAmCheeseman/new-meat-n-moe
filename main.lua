@@ -28,7 +28,7 @@ end
 
 local fullscreen = love.window.getFullscreen()
 
-core.event.connect("keyPressed", function(key, isRepeat)
+core.event.connect("keyPressed", function(key, _)
   if key == controls.keys.fullscreen then
     fullscreen = not fullscreen
     love.window.setFullscreen(fullscreen, "desktop")
