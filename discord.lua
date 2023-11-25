@@ -14,16 +14,16 @@ discord.presence = {
 
 if connectDiscord then
 
-function discordRpc.ready(userId, username, discriminator, avatar)
-    print(string.format("Discord ready (%s, %s, %s, %s)", userId, username, discriminator, avatar))
+function discordRpc.ready(_, username, _, _)
+  print("Discord connected to " .. username)
 end
 
 function discordRpc.disconnected(errorCode, message)
-    print(string.format("Discord disconnected (%d: %s)", errorCode, message))
+  print(string.format("Discord disconnected (%d: %s)", errorCode, message))
 end
 
 function discordRpc.errored(errorCode, message)
-    print(string.format("Discord error (%d: %s)", errorCode, message))
+  print(string.format("Discord error (%d: %s)", errorCode, message))
 end
 
 function discord.init()
