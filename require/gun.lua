@@ -44,12 +44,16 @@ function Gun:update(dt)
   local cooldownOver = self.cooldown.isOver
   if love.mouse.isDown(controls.mouse.weapon1) and cooldownOver and isActive then
     local mx, my = core.viewport.getMousePosition("main")
+    self.boundObj:activateWeapon(self)
     self:shoot(mx, my)
     self.cooldown:start()
   end
 end
 
 function Gun:draw()
+  if not self.visible then
+    return
+  end
   self.sprite:draw(self.x + self.offsetx, self.y + self.offsety, self.rotation, 1, self.scaley)
 end
 

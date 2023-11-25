@@ -24,8 +24,15 @@ function Meat:init()
 
   self.speed = 90
 
-  self.gun = Hand(self)
-  core.objs:add(self.gun)
+  local gun = Shotgun(self)
+  core.objs:add(gun)
+  self:addWeapon(gun)
+
+  local hand = Hand(self)
+  core.objs:add(hand)
+  self:addWeapon(hand)
+
+  self:activateWeapon(gun)
 end
 
 function Meat:takeDamage(...)

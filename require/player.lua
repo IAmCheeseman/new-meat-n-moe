@@ -39,6 +39,8 @@ function Player:init(maxHealth)
   self.accel = 5
   self.frict = 10
 
+  self.weapons = {}
+
   self.stateMachine = core.StateMachine(self)
       :addState("default", {
         update = self.defaultUpdate,
@@ -71,13 +73,26 @@ function Player:init(maxHealth)
   }
 end
 
+function Player:addWeapon(obj)
+  table.insert(self.weapons, obj)
+end
+
+function Player:activateWeapon(obj)
+  for _, weapon in ipairs(self.weapons) do
+    weapon.visible = weapon == obj
+  end
+end
+
 function Player:takeDamage(amount, kbDir, kbStrength)
   if characters.getActive() == self then
     self.health = self.health - amount
     if self.health <= 0 then
       characters.swap()
       core.objs:remove(self)
-      core.objs:remove(self.gun)
+
+      for _, weapon in ipairs(self.weapons) do
+        core.objs:remove(weapon)
+      end
     end
   end
 

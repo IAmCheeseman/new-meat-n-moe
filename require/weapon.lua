@@ -8,6 +8,8 @@ function Weapon:init(boundObj)
   self.targetOffsetX = 0
   self.targetOffsetY = 0
 
+  self.visible = true
+
   self.boundObj = boundObj
   self.trackSpeed = 48
 end

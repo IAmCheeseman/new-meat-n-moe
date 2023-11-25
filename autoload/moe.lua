@@ -15,8 +15,11 @@ function Moe:init()
   self.bloodSprite = assets.images.moe_bloody:clone()
   self.bloodSprite:setOffsetPreset("center", "bottom")
 
-  self.gun = Pistol(self)
-  core.objs:add(self.gun)
+  local gun = Pistol(self)
+  core.objs:add(gun)
+  self:addWeapon(gun)
+
+  self:activateWeapon(gun)
 end
 
 function Moe:updateBob(dt)
