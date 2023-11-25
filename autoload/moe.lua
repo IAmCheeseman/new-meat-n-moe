@@ -41,6 +41,8 @@ function Moe:inactiveUpdate(dt)
 end
 
 function Moe:defaultDraw()
+  self:base("defaultDraw")
+
   local mx, _ = core.viewport.getMousePosition("main")
 
   local x = math.floor(self.x)

@@ -12,6 +12,8 @@ end
 
 core.event.connect("keyPressed", onKeyPressed)
 
+assets.images.glow:setOffsetPreset("center", "center")
+
 function Player:init(maxHealth)
   self:base("init")
 
@@ -29,6 +31,9 @@ function Player:init(maxHealth)
   self.blood = love.graphics.newShader("vfx/blood.frag")
   self.blood:send("noise", self.n)
   self.blood:send("strength", 0)
+
+  self.glow = assets.images.glow:clone()
+  self.glow.modulate = {0.3, 0, 0.3}
 
   self.speed = 110
   self.accel = 5
@@ -164,6 +169,11 @@ function Player:inactiveUpdate(dt)
 end
 
 function Player:defaultDraw()
+  if characters.getActive() == self then
+    love.graphics.setBlendMode("add")
+    self.glow:draw(self.x, self.y - self.sprite.height / 4)
+    love.graphics.setBlendMode("alpha")
+  end
 end
 
 return Player

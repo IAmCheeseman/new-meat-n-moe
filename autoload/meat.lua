@@ -48,6 +48,8 @@ function Meat:inactiveUpdate(dt)
 end
 
 function Meat:defaultDraw()
+  self:base("defaultDraw")
+
   local mx, _ = core.viewport.getMousePosition("main")
 
   local x = math.floor(self.x)
