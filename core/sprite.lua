@@ -116,6 +116,7 @@ function Sprite:draw(x, y, r, sx, sy)
 
   love.graphics.setColor(unpack(self.modulate))
   love.graphics.draw(self.image, quad, x, y, r, sx, sy, self.offsetx, self.offsety)
+  love.graphics.setColor(1, 1, 1)
 end
 
 function Sprite:setOffsetPreset(horizontal, vertical)
