@@ -38,6 +38,9 @@ function Shotgun:shoot(mx, my)
 
   self.offsetx = self.offsetx + math.cos(angle + math.pi) * 10
   self.offsety = self.offsety + math.sin(angle + math.pi) * 10
+
+  self.boundObj.vx = self.boundObj.vx - math.cos(angle) * 100
+  self.boundObj.vy = self.boundObj.vy - math.sin(angle) * 100
 end
 
 return Shotgun
