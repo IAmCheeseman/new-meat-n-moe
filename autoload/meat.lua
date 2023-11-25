@@ -9,7 +9,7 @@ local Meat = core.Class(Player)
 
 local animations = {
   idle = { from=1, to=2 },
-  walk = { from=7, to=11 },
+  walk = { from=7, to=12 },
 }
 assets.images.meat:initAnimation(6, 3, animations)
 assets.images.meat_bloody:initAnimation(6, 3, animations)
