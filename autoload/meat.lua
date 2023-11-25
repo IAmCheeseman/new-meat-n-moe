@@ -62,7 +62,7 @@ function Meat:defaultDraw()
     scalex = active.x > self.x and -1 or 1
   end
 
-  self.sprite:draw(x, y, 0, scalex, 1)
+  self:drawSprite(x, y, 0, scalex, 1)
 
   local ix, iy = self:getInputVector()
 

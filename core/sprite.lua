@@ -8,6 +8,7 @@ function Sprite:init(spritePath)
   self.image = love.graphics.newImage(spritePath)
 
   self.width, self.height = self.image:getDimensions()
+  self.realWidth, self.realHeight = self.width, self.height
   self.frame = 1
   self.time = 0
   self.path = spritePath
@@ -53,6 +54,8 @@ function Sprite:initAnimation(hframes, vframes, animations)
   self.inputAnimation = animations
   self.vframes = vframes
   self.hframes = hframes
+  self.realWidth = self.width
+  self.realHeight = self.height
   self.width = self.width / hframes
   self.height = self.height / vframes
   if self.tags[animation] then

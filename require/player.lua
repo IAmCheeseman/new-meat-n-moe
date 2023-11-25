@@ -32,8 +32,8 @@ function Player:init(maxHealth)
   self.blood:send("noise", self.n)
   self.blood:send("strength", 0)
 
-  self.glow = assets.images.glow:clone()
-  self.glow.modulate = {0, 0.2, 0.5}
+  self.outline = love.graphics.newShader("vfx/outline.frag")
+  self.outline:send("outlineColor", {0, 1, 1, 0.5})
 
   self.speed = 110
   self.accel = 5
@@ -168,12 +168,20 @@ function Player:inactiveUpdate(dt)
   end
 end
 
-function Player:defaultDraw()
+function Player:drawSprite(...)
+  self.outline:send("pixelSize", {1/self.sprite.realWidth, 1/self.sprite.realHeight})
   if characters.getActive() == self then
-    love.graphics.setBlendMode("add")
-    self.glow:draw(self.x, self.y - self.sprite.height / 4)
-    love.graphics.setBlendMode("alpha")
+    self.outline:send("size", 1)
+  else
+    self.outline:send("size", 0)
   end
+
+  love.graphics.setShader(self.outline)
+  self.sprite:draw(...)
+  love.graphics.setShader()
+end
+
+function Player:defaultDraw()
 end
 
 return Player

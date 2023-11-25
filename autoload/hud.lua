@@ -27,5 +27,5 @@ core.event.connect("gui", function()
   local inactive = characters.getInactive()
 
   drawCharacterHealth(1, 1, 48, 8, 1, 0, 0, 1, active)
-  drawCharacterHealth(1, 10, 48, 4, 0.5, 0, 0, 0, inactive)
+  drawCharacterHealth(1, 10, 48, 4, 0.6, 0, 0.1, 0, inactive)
 end)

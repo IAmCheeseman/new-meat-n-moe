@@ -56,7 +56,7 @@ function Moe:defaultDraw()
     scalex = active.x > self.x and -1 or 1
   end
 
-  self.sprite:draw(x, y, 0, scalex, 1)
+  self:drawSprite(x, y, 0, scalex, 1)
 
   love.graphics.setShader(self.blood)
   self.bloodSprite:draw(x, y, 0, scalex, 1)
