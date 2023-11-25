@@ -23,6 +23,8 @@ function levelLoader.load(levelPath)
 
   objSpawner:spawnMap(layers)
 
+  local width, height = 0, 0
+
   for _, layer in ipairs(layers) do
     if layer.type == "tilelayer" then
       if layer.name == levelLoader.pathfindingLayer then
@@ -36,11 +38,23 @@ function levelLoader.load(levelPath)
         end
       end
 
+      if layer.width > width then
+        width = layer.width
+      end
+      if layer.height > height then
+        height = layer.height
+      end
+
       objList:add(layer)
     elseif layer.type == "imagelayer" then
       objList:add(layer)
     end
   end
+
+  event.call("levelChanged", {
+    width = width,
+    height = height,
+  })
 end
 
 return levelLoader
