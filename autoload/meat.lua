@@ -10,15 +10,15 @@ local animations = {
   idle = { from=1, to=2 },
   walk = { from=7, to=11 },
 }
-assets.entities.meat:initAnimation(6, 3, animations)
-assets.entities.meat_bloody:initAnimation(6, 3, animations)
+assets.images.meat:initAnimation(6, 3, animations)
+assets.images.meat_bloody:initAnimation(6, 3, animations)
 
 function Meat:init()
   self:base("init", 130)
 
-  self.sprite = assets.entities.meat:clone()
+  self.sprite = assets.images.meat:clone()
   self.sprite:setOffsetPreset("center", "bottom")
-  self.bloodSprite = assets.entities.meat_bloody:clone()
+  self.bloodSprite = assets.images.meat_bloody:clone()
   self.bloodSprite:setOffsetPreset("center", "bottom")
 
   self.speed = 90

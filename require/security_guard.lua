@@ -6,8 +6,6 @@ local SecurityGuard = core.Class(core.GameObj)
 local characters = require("require.characters")
 local drawShadow = require("require.shadow")
 
-assets.entities.employee_corpse:setOffsetPreset("center", "bottom")
-
 function SecurityGuard:init()
   self:base("init")
 
@@ -81,7 +79,7 @@ function SecurityGuard:takeDamage(amount, kbDir, kbStrength)
 
     core.objs:remove(self)
 
-    local sprite = assets.entities.employee_corpse:clone()
+    local sprite = self.corpseSprite:clone()
     local corpse = Corpse(self.vx, self.vy, sprite)
     corpse.x = self.x
     corpse.y = self.y
@@ -188,7 +186,7 @@ function SecurityGuard:attackUpdate(dt)
 
     local bullet = self.bullet(angle, 200)
     bullet.x, bullet.y = bx, by
-    bullet.sprite = assets.entities.enemy_bullet
+    bullet.sprite = assets.images.enemy_bullet
     bullet.damageMask = "player"
 
     core.objs:add(bullet)

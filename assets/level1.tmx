@@ -9,7 +9,7 @@
  <tileset firstgid="1" source="office_tiles.tsx"/>
  <tileset firstgid="56" source="objects.tsx"/>
  <imagelayer id="3" name="Image" repeatx="1" repeaty="1">
-  <image source="world/floor.png" width="64" height="64"/>
+  <image source="images/floor.png" width="192" height="192"/>
   <properties>
    <property name="zIndex" type="int" value="-10"/>
   </properties>

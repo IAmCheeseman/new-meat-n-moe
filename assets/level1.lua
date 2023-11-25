@@ -28,7 +28,7 @@ return {
       spacing = 0,
       margin = 0,
       columns = 11,
-      image = "world/walls.png",
+      image = "images/walls.png",
       imagewidth = 176,
       imageheight = 80,
       objectalignment = "unspecified",
@@ -279,13 +279,13 @@ return {
       tiles = {
         {
           id = 0,
-          image = "entities/moe.png",
+          image = "images/moe.png",
           width = 11,
           height = 11
         },
         {
           id = 1,
-          image = "entities/meat.png",
+          image = "images/meat.png",
           x = 0,
           y = 0,
           width = 13,
@@ -293,7 +293,7 @@ return {
         },
         {
           id = 2,
-          image = "entities/employee.png",
+          image = "images/employee.png",
           x = 0,
           y = 0,
           width = 13,
@@ -301,7 +301,7 @@ return {
         },
         {
           id = 4,
-          image = "entities/shotgun_employee.png",
+          image = "images/shotgun_employee.png",
           x = 0,
           y = 0,
           width = 21,
@@ -313,7 +313,7 @@ return {
   layers = {
     {
       type = "imagelayer",
-      image = "world/floor.png",
+      image = "images/floor.png",
       id = 3,
       name = "Image",
       class = "",

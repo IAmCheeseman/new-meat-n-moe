@@ -7,7 +7,7 @@ function Projectile:init(dir, speed)
   self.speed = speed
   self.damage = 10
 
-  self.sprite = assets.entities.bullet
+  self.sprite = assets.images.bullet:clone()
   self.sprite:setOffsetPreset("center", "center")
 
   self.hitbox = core.DetectorBox {

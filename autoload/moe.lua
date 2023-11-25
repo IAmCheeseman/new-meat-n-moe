@@ -10,9 +10,9 @@ function Moe:init()
 
   self.bob = 0
 
-  self.sprite = assets.entities.moe:clone()
+  self.sprite = assets.images.moe:clone()
   self.sprite:setOffsetPreset("center", "bottom")
-  self.bloodSprite = assets.entities.moe_bloody:clone()
+  self.bloodSprite = assets.images.moe_bloody:clone()
   self.bloodSprite:setOffsetPreset("center", "bottom")
 
   self.gun = Pistol(self)

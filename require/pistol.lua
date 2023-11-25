@@ -7,7 +7,7 @@ local shootSfx = assets.sounds.pistol
 
 function Pistol:init(boundObj)
   self:base("init", boundObj, 0.7)
-  self.sprite = assets.entities.moe_gun
+  self.sprite = assets.images.moe_gun
   self.sprite:setOffsetPreset("left", "center")
 
   self.targetOffsetY = -self.sprite.height / 2

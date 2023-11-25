@@ -6,7 +6,7 @@ function Cursor:init()
 
   love.mouse.setVisible(false)
 
-  self.sprite = assets.ui.cursor
+  self.sprite = assets.images.cursor
   self.sprite:setOffsetPreset("center", "center")
 end
 

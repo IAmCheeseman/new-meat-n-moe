@@ -7,7 +7,7 @@ local shootSfx = assets.sounds.shotgun
 
 function Shotgun:init(boundObj)
   self:base("init", boundObj, 1.6)
-  self.sprite = assets.entities.meat_gun:clone()
+  self.sprite = assets.images.meat_gun:clone()
   self.sprite:setOffsetPreset("left", "center")
 
   self.targetOffsetY = -self.sprite.height / 2

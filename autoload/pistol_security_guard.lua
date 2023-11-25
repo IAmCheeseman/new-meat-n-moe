@@ -7,8 +7,10 @@ local animations = {
   walk = { from=4, to=6 },
   aim  = { from=7, to=7 },
 }
-assets.entities.employee:initAnimation(3, 3, animations)
-assets.entities.employee_bloody:initAnimation(3, 3, animations)
+
+assets.images.employee:initAnimation(3, 3, animations)
+assets.images.employee_bloody:initAnimation(3, 3, animations)
+assets.images.employee_corpse:setOffsetPreset("center", "bottom")
 
 function PistolSecurityGuard:init()
   self:base("init")
@@ -16,8 +18,9 @@ function PistolSecurityGuard:init()
   self.gunOffsetX = 3
   self.gunOffsetY = -6
 
-  self.sprite = assets.entities.employee:clone()
-  self.gunSprite = assets.entities.employee_gun:clone()
+  self.sprite = assets.images.employee:clone()
+  self.gunSprite = assets.images.employee_gun:clone()
+  self.corpseSprite = assets.images.employee_corpse:clone()
 
   self.sprite:setOffsetPreset("center", "bottom")
   self.gunSprite:setOffsetPreset("left", "center")
