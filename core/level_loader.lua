@@ -19,13 +19,11 @@ function levelLoader.initialize(objs, spawner)
 end
 
 function levelLoader.load(levelPath)
-  local layers = tiled.openLevel(levelLoader.assetsDirectory, levelPath)
+  local map = tiled.openLevel(levelLoader.assetsDirectory, levelPath)
 
-  objSpawner:spawnMap(layers)
+  objSpawner:spawnMap(map.layers)
 
-  local width, height = 0, 0
-
-  for _, layer in ipairs(layers) do
+  for _, layer in ipairs(map.layers) do
     if layer.type == "tilelayer" then
       if layer.name == levelLoader.pathfindingLayer then
         pathfinding.initWithTileLayer(layer)
@@ -38,23 +36,13 @@ function levelLoader.load(levelPath)
         end
       end
 
-      if layer.width > width then
-        width = layer.width
-      end
-      if layer.height > height then
-        height = layer.height
-      end
-
       objList:add(layer)
     elseif layer.type == "imagelayer" then
       objList:add(layer)
     end
   end
 
-  event.call("levelChanged", {
-    width = width,
-    height = height,
-  })
+  event.call("levelChanged", map)
 end
 
 return levelLoader

@@ -76,7 +76,16 @@ function tiled.openLevel(assetDirectory, level)
     end
   end
 
-  return layers
+  local map = {}
+  map.width = data.width
+  map.height = data.height
+  map.tileWidth = data.tilewidth
+  map.tileHeight = data.tileheight
+  map.pixelWidth = data.width * data.tilewidth
+  map.pixelHeight = data.height * data.tileheight
+  map.layers = layers
+
+  return map
 end
 
 return tiled
