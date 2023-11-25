@@ -17,8 +17,4 @@ function Weapon:update(dt)
   self.y = core.math.lerp(self.y, self.boundObj.y + self.targetOffsetY, self.trackSpeed * dt)
 end
 
-function Weapon:attack()
-
-end
-
 return Weapon
