@@ -45,13 +45,13 @@ end
 
 function Meat:defaultUpdate(dt)
   self:base("defaultUpdate", dt)
-  self.sprite:update(dt)
+  self.sprite:update()
   self.bloodSprite.frame = self.sprite.frame
 end
 
 function Meat:inactiveUpdate(dt)
   self:base("inactiveUpdate", dt)
-  self.sprite:update(dt)
+  self.sprite:update()
   self.bloodSprite.frame = self.sprite.frame
 end
 

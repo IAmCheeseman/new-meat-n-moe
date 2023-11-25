@@ -29,7 +29,8 @@ function StateMachine:addState(name, callbacks)
   return self
 end
 
-function StateMachine:update(dt)
+function StateMachine:update()
+  local dt = love.timer.getDelta()
   self.states[self.current].update(self.obj, dt)
 end
 

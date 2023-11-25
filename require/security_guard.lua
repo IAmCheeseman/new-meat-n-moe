@@ -89,14 +89,14 @@ function SecurityGuard:takeDamage(amount, kbDir, kbStrength)
   return true
 end
 
-function SecurityGuard:update(dt)
-  self.stateMachine:update(dt)
-  self.sprite:update(dt)
+function SecurityGuard:update(_)
+  self.stateMachine:update()
+  self.sprite:update()
 
   self.zIndex = self.y
 end
 
-function SecurityGuard:idleUpdate(dt)
+function SecurityGuard:idleUpdate(_)
   local active = characters.getActive()
   local dist = core.math.distanceBetween(self.x, self.y, active.x, active.y)
   if dist < 16 * 5 then
@@ -109,7 +109,7 @@ end
 function SecurityGuard:chaseUpdate(dt)
   self:defaultUpdate(dt, false)
 
-  self.shootTimer:update(dt)
+  self.shootTimer:update()
 
   local active = characters.getActive()
   local dist = core.math.distanceBetween(self.x, self.y, active.x, active.y)

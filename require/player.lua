@@ -103,7 +103,7 @@ function Player:takeDamage(amount, kbDir, kbStrength)
 end
 
 function Player:update(dt)
-  self.stateMachine:update(dt)
+  self.stateMachine:update()
   self.zIndex = self.y
 end
 

@@ -28,7 +28,9 @@ function Timer:stop()
   self.justOver = true
 end
 
-function Timer:update(dt)
+function Timer:update()
+  local dt = love.timer.getDelta()
+
   self.timeLeft = self.timeLeft - dt
   self.justOver = false
   if self.timeLeft <= 0 then

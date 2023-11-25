@@ -44,7 +44,7 @@ function Hand:update(dt)
 
   self.zIndex = self.boundObj.zIndex + 1
 
-  self.cooldown:update(dt)
+  self.cooldown:update()
 
   local isActive = characters.getActive() == self.boundObj
   local cooldownOver = self.cooldown.isOver

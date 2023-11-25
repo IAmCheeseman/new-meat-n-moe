@@ -86,7 +86,9 @@ function Sprite:play(name)
   self.frame = self.tags[name].from
 end
 
-function Sprite:update(dt)
+function Sprite:update()
+  local dt = love.timer.getDelta()
+
   local tag = self.tags[self.animation]
 
   if not tag then
