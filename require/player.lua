@@ -134,20 +134,6 @@ function Player:defaultUpdate(dt)
 
   self.box:moveAndCollide(self.vx, self.vy, dt)
 
-  local cw, ch = core.viewport.getSize("main")
-  local cx, cy = core.viewport.getCameraPos("main")
-  local mx, my = core.viewport.getMousePosition("main")
-  local dist = core.math.distanceBetween(self.x, self.y, mx, my) * 0.2
-  dist = core.math.clamp(dist, 0, 16)
-  local angle = core.math.angleBetween(self.x, self.y, mx, my)
-
-  local tx = self.x - cw / 2 + math.cos(angle) * dist
-  local ty = self.y - ch / 2 + math.sin(angle) * dist
-
-  core.viewport.setCameraPos("main",
-      core.math.lerp(cx, tx, 12 * dt),
-      core.math.lerp(cy, ty, 12 * dt))
-
   if characters.getActive() ~= self then
     self.stateMachine:setState("inactive")
   end
@@ -158,11 +144,11 @@ function Player:inactiveUpdate(dt)
   local dx, dy = core.math.directionTo(self.x, self.y, tx, ty)
   local dist = core.math.distanceBetween(self.x, self.y, tx, ty)
 
-  if dist > 16 * 3 then
+  if dist > 16 * 5 then
     self.x, self.y = tx, ty
   end
 
-  if dist > 16 then
+  if dist > 16 * 1.5 then
     local accel = self.accel
     local speed = characters.getActive().speed
     if core.math.dot(dx, dy, self.vx, self.vy) < 0.5 then
