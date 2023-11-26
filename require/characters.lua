@@ -1,3 +1,5 @@
+local camera = require("autoload.camera")
+
 local activeCharacter = nil
 local inactiveCharacter = nil
 
@@ -19,11 +21,13 @@ end
 
 function characters.swap()
   activeCharacter, inactiveCharacter = inactiveCharacter, activeCharacter
+  camera.boundObj = activeCharacter
 end
 
 function characters.init(character)
   if not activeCharacter then
     activeCharacter = character
+    camera.boundObj = character
   else
     inactiveCharacter = character
   end

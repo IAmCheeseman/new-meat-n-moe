@@ -1,6 +1,7 @@
 local Gun = require("require.gun")
 local Projectile = require("require.projectile")
 local controls = require("controls")
+local camera = require("autoload.camera")
 
 local Pistol = core.Class(Gun)
 local shootSfx = assets.sounds.pistol
@@ -28,6 +29,8 @@ function Pistol:shoot(mx, my)
 
   self.offsetx = self.offsetx + math.cos(angle + math.pi) * 5
   self.offsety = self.offsety + math.sin(angle + math.pi) * 5
+
+  camera.screenshake(5, 0.05, 0.05, 4, 4, false, angle)
 end
 
 return Pistol

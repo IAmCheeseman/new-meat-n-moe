@@ -1,6 +1,7 @@
 local Gun = require("require.gun")
 local Pellet = require("require.pellet")
 local controls = require("controls")
+local camera = require("autoload.camera")
 
 local Shotgun = core.Class(Gun)
 local shootSfx = assets.sounds.shotgun
@@ -17,6 +18,8 @@ function Shotgun:shoot(mx, my)
   local shootSource = love.audio.newSource(shootSfx)
   shootSource:setPitch(core.math.frandom(1, 1.2))
   shootSource:play()
+
+  camera.screenshake(5, 0.25, 0.05, 2, 4, true)
 
   local total = 10
   local spread = math.pi / 50
