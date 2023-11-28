@@ -34,7 +34,9 @@ core.event.connect("update", function(dt)
     if screenshake.reduce then
       angle = angle * (shakeTimer.timeLeft / shakeTimer.totalTime)
     end
-    camera.jump(angle, core.math.frandom(screenshake.strengthMin, screenshake.strengthMax))
+    camera.jump(
+        angle,
+        core.math.frandom(screenshake.strengthMin, screenshake.strengthMax))
     jumpTimer:start()
   end
 
@@ -52,9 +54,11 @@ core.event.connect("update", function(dt)
   if camera.boundObj then
     local cw, ch = core.viewport.getSize("main")
     local mx, my = core.viewport.getMousePosition("main")
-    local dist = core.math.distanceBetween(camera.boundObj.x, camera.boundObj.y, mx, my) * 0.2
+    local dist = core.math.distanceBetween(
+        camera.boundObj.x, camera.boundObj.y, mx, my) * 0.2
     dist = core.math.clamp(dist, 0, 16)
-    local angle = core.math.angleBetween(camera.boundObj.x, camera.boundObj.y, mx, my)
+    local angle = core.math.angleBetween(
+        camera.boundObj.x, camera.boundObj.y, mx, my)
 
     local tx = camera.boundObj.x - cw / 2 + math.cos(angle) * dist
     local ty = camera.boundObj.y - ch / 2 + math.sin(angle) * dist
@@ -66,7 +70,8 @@ core.event.connect("update", function(dt)
   end
 end)
 
-function camera.screenshake(priority, time, freq, strengthMin, strengthMax, reduce, angle)
+function camera.screenshake(
+    priority, time, freq, strengthMin, strengthMax, reduce, angle)
   reduce = reduce or false
 
   if priority <= screenshake.priority then
