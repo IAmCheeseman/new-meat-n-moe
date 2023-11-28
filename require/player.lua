@@ -94,12 +94,12 @@ function Player:takeDamage(amount, kbDir, kbStrength)
         core.objs:remove(weapon)
       end
     end
+
+    self.vx = self.vx + math.cos(kbDir) * kbStrength
+    self.vy = self.vy + math.sin(kbDir) * kbStrength
   end
 
-  self.vx = self.vx + math.cos(kbDir) * kbStrength
-  self.vy = self.vy + math.sin(kbDir) * kbStrength
-
-  return true
+  return characters.getActive() == self
 end
 
 function Player:update(dt)

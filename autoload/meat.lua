@@ -38,7 +38,9 @@ end
 function Meat:takeDamage(...)
   local res = self:base("takeDamage", ...)
 
-  blood.add(self.x, self.y)
+  if characters.getActive() == self then
+    blood.add(self.x, self.y)
+  end
 
   return res
 end
