@@ -39,7 +39,7 @@ function Meat:takeDamage(...)
   local res = self:base("takeDamage", ...)
 
   if characters.getActive() == self then
-    decal.decal(self.x, self.y)
+    decal.blood(self.x, self.y)
   end
 
   return res
