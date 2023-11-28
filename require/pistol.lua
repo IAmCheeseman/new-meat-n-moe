@@ -7,7 +7,7 @@ local Pistol = core.Class(Gun)
 local shootSfx = assets.sounds.pistol
 
 function Pistol:init(boundObj)
-  self:base("init", boundObj, 0.7)
+  self:base("init", boundObj, 0.2)
   self.sprite = assets.images.moe_gun
   self.sprite:setOffsetPreset("left", "center")
 
@@ -19,10 +19,14 @@ function Pistol:shoot(mx, my)
   shootSource:setPitch(core.math.frandom(1, 1.2))
   shootSource:play()
 
+  local spread = math.pi / 30
+
   local angle = core.math.angle(mx - self.x, my - self.y)
+  angle = angle + core.math.frandom(-spread, spread)
   local proj = Projectile(angle, 400)
   proj.x = self.x + math.cos(angle) * 7
   proj.y = self.y + math.sin(angle) * 7
+  proj.damage = 4
   proj.damageMask = "enemy"
 
   core.objs:add(proj)
