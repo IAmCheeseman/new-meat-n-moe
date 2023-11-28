@@ -19,7 +19,7 @@ function Shotgun:shoot(mx, my)
   shootSource:setPitch(core.math.frandom(1, 1.2))
   shootSource:play()
 
-  camera.screenshake(5, 0.5, 0.025, 1, 3, true)
+  camera.screenshake(5, 0.3, 0.025, 1, 3, true)
 
   local total = 10
   local spread = math.pi / 50

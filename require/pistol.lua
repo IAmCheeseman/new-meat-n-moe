@@ -30,7 +30,7 @@ function Pistol:shoot(mx, my)
   self.offsetx = self.offsetx + math.cos(angle + math.pi) * 5
   self.offsety = self.offsety + math.sin(angle + math.pi) * 5
 
-  camera.screenshake(5, 0.05, 0.05, 4, 6, false, angle + math.pi)
+  camera.screenshake(5, 0.05, 0.05, 2, 4, false, angle + math.pi)
 end
 
 return Pistol
