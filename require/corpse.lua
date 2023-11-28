@@ -1,3 +1,5 @@
+local decal = require("autoload.decal")
+
 local Corpse = core.Class(core.GameObj)
 
 function Corpse:init(vx, vy, sprite)
@@ -28,9 +30,12 @@ function Corpse:update(dt)
 
   self.zIndex = self.y
 
-  -- if core.math.length(self.vx, self.vy) < 1 then
-  --   core.objs:remove(self)
-  -- end
+  if core.math.length(self.vx, self.vy) < 1 then
+    decal.draw(function()
+      self:draw()
+    end)
+    core.objs:remove(self)
+  end
 end
 
 function Corpse:draw()

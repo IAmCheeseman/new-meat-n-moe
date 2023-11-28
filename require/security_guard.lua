@@ -1,6 +1,6 @@
 local Projectile = require("require.projectile")
 local Corpse = require("require.corpse")
-local blood = require("autoload.blood")
+local decal = require("autoload.decal")
 
 local SecurityGuard = core.Class(core.GameObj)
 local characters = require("require.characters")
@@ -72,8 +72,8 @@ function SecurityGuard:takeDamage(amount, kbDir, kbStrength, damager)
   self.vx = self.vx + math.cos(kbDir) * kbStrength
   self.vy = self.vy + math.sin(kbDir) * kbStrength
 
-  blood.add(self.x, self.y)
-  blood.coverDamager(self, damager)
+  decal.blood(self.x, self.y)
+  decal.coverDamager(self, damager)
 
   if self.health <= 0 and not self.isDead then
     self.isDead = true

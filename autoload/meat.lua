@@ -3,7 +3,7 @@ local Shotgun = require("require.shotgun")
 local Hand = require("require.hand")
 local characters = require("require.characters")
 local drawShadow = require("require.shadow")
-local blood = require("autoload.blood")
+local decal = require("autoload.decal")
 
 local Meat = core.Class(Player)
 
@@ -39,7 +39,7 @@ function Meat:takeDamage(...)
   local res = self:base("takeDamage", ...)
 
   if characters.getActive() == self then
-    blood.add(self.x, self.y)
+    decal.decal(self.x, self.y)
   end
 
   return res

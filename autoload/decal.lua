@@ -4,26 +4,26 @@ assets.images.blood:initAnimation(3, 1, {})
 assets.images.blood:setOffsetPreset("center", "center")
 local bloodSplats = assets.images.blood:clone()
 
-local BloodDrawer = core.Class(core.GameObj)
+local DecalDrawer = core.Class(core.GameObj)
 
-function BloodDrawer:init()
+function DecalDrawer:init()
   self:base("init")
   self.zIndex = -1
 end
 
-function BloodDrawer:draw()
+function DecalDrawer:draw()
   love.graphics.setColor(1, 1, 1)
   love.graphics.draw(canvas, 0, 0)
 end
 
 core.event.connect("levelChanged", function(level)
   canvas = love.graphics.newCanvas(level.pixelWidth, level.pixelHeight)
-  core.objs:add(BloodDrawer())
+  core.objs:add(DecalDrawer())
 end)
 
-local blood = {}
+local decal = {}
 
-function blood.add(x, y, r, g, b)
+function decal.blood(x, y, r, g, b)
   r = r or 0.8
   g = g or 0
   b = b or 0.2
@@ -38,7 +38,14 @@ function blood.add(x, y, r, g, b)
   love.graphics.setCanvas(prevCanvas)
 end
 
-function blood.coverDamager(damaged, damager)
+function decal.draw(f)
+  local prevCanvas = love.graphics.getCanvas()
+  love.graphics.setCanvas(canvas)
+  f()
+  love.graphics.setCanvas(prevCanvas)
+end
+
+function decal.coverDamager(damaged, damager)
   local base = damager
   while base.owner do
     base = base.owner
@@ -49,4 +56,4 @@ function blood.coverDamager(damaged, damager)
   end
 end
 
-return blood
+return decal
