@@ -153,8 +153,9 @@ function Player:inactiveUpdate(dt)
   if dist > stopDist then
     local accel = self.accel
     local speed = characters.getActive().speed
-    local percentageUntilTele = dist / teleportDist
-    speed = speed + (speed * percentageUntilTele)
+    local percentageUntilTele = core.math.snapped(dist, teleportDist / 4) / teleportDist
+    speed = speed + speed * percentageUntilTele
+    accel = accel + accel * percentageUntilTele * 2
     
     if core.math.dot(dx, dy, self.vx, self.vy) < 0.5 then
       accel = self.frict
