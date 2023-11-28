@@ -31,6 +31,7 @@ function Player:init(maxHealth)
   self.blood = love.graphics.newShader("vfx/blood.frag")
   self.blood:send("noise", self.n)
   self.blood:send("strength", 0)
+  self.bloodStrength = 0
 
   self.outline = love.graphics.newShader("vfx/outline.frag")
   self.outline:send("outlineColor", {0, 1, 1, 0.5})
@@ -83,7 +84,7 @@ function Player:activateWeapon(obj)
   end
 end
 
-function Player:takeDamage(amount, kbDir, kbStrength)
+function Player:takeDamage(amount, kbDir, kbStrength, damager)
   if characters.getActive() == self then
     self.health = self.health - amount
     if self.health <= 0 then
@@ -105,6 +106,11 @@ end
 function Player:update(dt)
   self.stateMachine:update()
   self.zIndex = self.y
+
+  local bloodTickDown = core.math.length(self.vx, self.vy) / self.speed * 0.2
+  self.bloodStrength = core.math.clamp(
+      self.bloodStrength - bloodTickDown * dt, 0, 1)
+  self.blood:send("strength", self.bloodStrength)
 end
 
 function Player:draw()

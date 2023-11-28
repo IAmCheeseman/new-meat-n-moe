@@ -23,7 +23,7 @@ function Pistol:shoot(mx, my)
 
   local angle = core.math.angle(mx - self.x, my - self.y)
   angle = angle + core.math.frandom(-spread, spread)
-  local proj = Projectile(angle, 400)
+  local proj = Projectile(angle, 400, self)
   proj.x = self.x + math.cos(angle) * 7
   proj.y = self.y + math.sin(angle) * 7
   proj.damage = 4

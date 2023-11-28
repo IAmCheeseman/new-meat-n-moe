@@ -2,8 +2,8 @@ local Projectile = require("require.projectile")
 
 local Pellet = core.Class(Projectile)
 
-function Pellet:init(dir, speed)
-  self:base("init", dir, speed)
+function Pellet:init(dir, speed, owner)
+  self:base("init", dir, speed, owner)
 
   self.totalTime = 0.2 + love.math.random() * 0.2
   self.time = self.totalTime

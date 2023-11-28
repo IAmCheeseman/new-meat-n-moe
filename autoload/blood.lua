@@ -38,4 +38,15 @@ function blood.add(x, y, r, g, b)
   love.graphics.setCanvas(prevCanvas)
 end
 
+function blood.coverDamager(damaged, damager)
+  local base = damager
+  while base.owner do
+    base = base.owner
+  end
+
+  if base.bloodStrength then
+    base.bloodStrength = core.math.clamp(base.bloodStrength + 0.2, 0, 1)
+  end
+end
+
 return blood

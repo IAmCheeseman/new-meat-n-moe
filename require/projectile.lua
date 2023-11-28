@@ -1,11 +1,13 @@
 local Projectile = core.Class(core.GameObj)
 
-function Projectile:init(dir, speed)
+function Projectile:init(dir, speed, owner)
   self:base("init")
 
   self.dir = dir
   self.speed = speed
   self.damage = 10
+
+  self.owner = owner
 
   self.sprite = assets.images.bullet:clone()
   self.sprite:setOffsetPreset("center", "center")
@@ -22,7 +24,7 @@ function Projectile:init(dir, speed)
 end
 
 function Projectile:damageObj(obj)
-  if obj:takeDamage(self.damage, self.dir, self.speed * 0.1) then
+  if obj:takeDamage(self.damage, self.dir, self.speed * 0.1, self) then
     core.objs:remove(self)
   end
 end

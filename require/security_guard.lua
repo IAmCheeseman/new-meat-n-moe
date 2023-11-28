@@ -67,12 +67,13 @@ function SecurityGuard:init()
   self.path = nil
 end
 
-function SecurityGuard:takeDamage(amount, kbDir, kbStrength)
+function SecurityGuard:takeDamage(amount, kbDir, kbStrength, damager)
   self.health = self.health - amount
   self.vx = self.vx + math.cos(kbDir) * kbStrength
   self.vy = self.vy + math.sin(kbDir) * kbStrength
 
   blood.add(self.x, self.y)
+  blood.coverDamager(self, damager)
 
   if self.health <= 0 and not self.isDead then
     self.isDead = true

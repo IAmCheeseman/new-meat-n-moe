@@ -11,6 +11,7 @@ function Weapon:init(boundObj)
   self.visible = true
 
   self.boundObj = boundObj
+  self.owner = boundObj
   self.trackSpeed = 48
 end
 
