@@ -4,7 +4,7 @@ function Corpse:init(vx, vy, sprite)
   self:base("init")
 
   self.sprite = sprite
-  self.sprite.modulate = {0.3, 0.3, 0.3, 0.8}
+  self.sprite.modulate = {0.3, 0.3, 0.3}
 
   self.vx, self.vy = vx, vy
   self.frict = 5
