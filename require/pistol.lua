@@ -10,8 +10,9 @@ function Pistol:init(boundObj)
   self:base("init", boundObj, 0.2)
   self.sprite = assets.images.moe_gun
   self.sprite:setOffsetPreset("left", "center")
+  self.sprite.offsetx = 5
 
-  self.targetOffsetY = -self.sprite.height / 2
+  self.targetOffsetY = -2
 end
 
 function Pistol:shoot(mx, my)
