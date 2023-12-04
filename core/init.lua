@@ -39,6 +39,7 @@ core.SparseSet      = require(path .. ".object.sparse_set")
 core.Array          = require(path .. ".object.array")
 core.ResolverBox    = require(path .. ".physics.resolver_box")
 core.DetectorBox    = require(path .. ".physics.detector_box")
+core.SoundPlayer    = require(path .. ".sound_player")
 
 local TiledObjSpawner = require(path .. ".tiled.tiled_object_spawner")
 

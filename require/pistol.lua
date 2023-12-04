@@ -1,10 +1,9 @@
 local Gun = require("require.gun")
 local Projectile = require("require.projectile")
-local controls = require("controls")
 local camera = require("autoload.camera")
 
 local Pistol = core.Class(Gun)
-local shootSfx = assets.sounds.pistol
+local shootSfx = core.SoundPlayer(assets.sounds.pistol, 7)
 
 function Pistol:init(boundObj)
   self:base("init", boundObj, 0.2)
@@ -16,9 +15,8 @@ function Pistol:init(boundObj)
 end
 
 function Pistol:shoot(mx, my)
-  local shootSource = love.audio.newSource(shootSfx)
-  shootSource:setPitch(core.math.frandom(1, 1.2))
-  shootSource:play()
+  shootSfx:setPitch(core.math.frandom(1, 1.2))
+  shootSfx:play()
 
   local spread = math.pi / 30
 

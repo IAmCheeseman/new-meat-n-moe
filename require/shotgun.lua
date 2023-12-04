@@ -1,10 +1,9 @@
 local Gun = require("require.gun")
 local Pellet = require("require.pellet")
-local controls = require("controls")
 local camera = require("autoload.camera")
 
 local Shotgun = core.Class(Gun)
-local shootSfx = assets.sounds.shotgun
+local shootSfx = core.SoundPlayer(assets.sounds.shotgun, 2)
 
 function Shotgun:init(boundObj)
   self:base("init", boundObj, 1.6)
@@ -15,9 +14,8 @@ function Shotgun:init(boundObj)
 end
 
 function Shotgun:shoot(mx, my)
-  local shootSource = love.audio.newSource(shootSfx)
-  shootSource:setPitch(core.math.frandom(1, 1.2))
-  shootSource:play()
+  shootSfx:setPitch(core.math.frandom(1, 1.2))
+  shootSfx:play()
 
   camera.screenshake(5, 0.3, 0.025, 1, 3, true)
 
