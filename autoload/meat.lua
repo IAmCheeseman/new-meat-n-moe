@@ -4,6 +4,7 @@ local Hand = require("require.hand")
 local characters = require("require.characters")
 local drawShadow = require("require.shadow")
 local decal = require("autoload.decal")
+local controls = require("controls")
 
 local Meat = core.Class(Player)
 
@@ -33,6 +34,35 @@ function Meat:init()
   self:addWeapon(hand)
 
   self:activateWeapon(gun)
+
+  core.event.connect("keyPressed", self.onKeyPressed, self)
+end
+
+function Meat:onKeyPressed(key, isRepeated)
+  if key == controls.keys.ability2 and not isRepeated then
+    local ix, iy = self:getInputVector()
+    local teleportDistance = 16 * 4
+
+    for _=1, 5 do
+      local angle = core.math.frandom(0, math.pi * 2)
+      local dist = core.math.frandom(0, 32)
+      decal.blood(
+        self.x + math.cos(angle) * dist,
+        self.y + math.sin(angle) * dist)
+    end
+
+    local angle = core.math.angle(ix, iy)
+    local splatCount = 5
+    for i=1, splatCount do
+      local dist = (i / splatCount) * teleportDistance
+      decal.blood(
+        self.x + math.cos(angle) * dist,
+        self.y + math.sin(angle) * dist)
+    end
+
+    self.x = self.x + ix * teleportDistance
+    self.y = self.y + iy * teleportDistance
+  end
 end
 
 function Meat:takeDamage(...)
